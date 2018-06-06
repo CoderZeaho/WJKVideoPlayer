@@ -1,0 +1,756 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAE4033E20C7913C00018A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4033D20C7913C00018A02 /* AppDelegate.m */; };
+		FAE4034120C7913C00018A02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4034020C7913C00018A02 /* ViewController.m */; };
+		FAE4034420C7913C00018A02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE4034220C7913C00018A02 /* Main.storyboard */; };
+		FAE4034620C7913C00018A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE4034520C7913C00018A02 /* Assets.xcassets */; };
+		FAE4034C20C7913C00018A02 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4034B20C7913C00018A02 /* main.m */; };
+		FAE4039720C7918B00018A02 /* UIViewController+PlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4037420C7918B00018A02 /* UIViewController+PlayerRotation.m */; };
+		FAE4039820C7918B00018A02 /* UIView+WebVideoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4037720C7918B00018A02 /* UIView+WebVideoCache.m */; };
+		FAE4039920C7918B00018A02 /* WJKVideoPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FAE4037A20C7918B00018A02 /* WJKVideoPlayer.bundle */; };
+		FAE4039A20C7918B00018A02 /* WJKVideoPlayerCompat.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4037C20C7918B00018A02 /* WJKVideoPlayerCompat.m */; };
+		FAE4039B20C7918B00018A02 /* WJKVideoPlayerSupportUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038020C7918B00018A02 /* WJKVideoPlayerSupportUtils.m */; };
+		FAE4039C20C7918B00018A02 /* UITableView+WebVideoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038220C7918B00018A02 /* UITableView+WebVideoCache.m */; };
+		FAE4039D20C7918B00018A02 /* WJKVideoPlayerCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038320C7918B00018A02 /* WJKVideoPlayerCacheFile.m */; };
+		FAE4039E20C7918B00018A02 /* WJKVideoPlayerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038420C7918B00018A02 /* WJKVideoPlayerDownloader.m */; };
+		FAE4039F20C7918B00018A02 /* WJKResourceLoadingRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038520C7918B00018A02 /* WJKResourceLoadingRequestTask.m */; };
+		FAE403A020C7918B00018A02 /* WJKVideoPlayerBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038920C7918B00018A02 /* WJKVideoPlayerBrightnessView.m */; };
+		FAE403A320C7918B00018A02 /* WJKVideoPlayerControlViews.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038F20C7918B00018A02 /* WJKVideoPlayerControlViews.m */; };
+		FAE403A420C7918B00018A02 /* WJKVideoPlayerCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039020C7918B00018A02 /* WJKVideoPlayerCache.m */; };
+		FAE403A520C7918B00018A02 /* WJKVideoPlayerResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039120C7918B00018A02 /* WJKVideoPlayerResourceLoader.m */; };
+		FAE403A620C7918B00018A02 /* WJKVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039220C7918B00018A02 /* WJKVideoPlayer.m */; };
+		FAE403A720C7918B00018A02 /* UITableViewCell+WebVideoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039320C7918B00018A02 /* UITableViewCell+WebVideoCache.m */; };
+		FAE403A820C7918B00018A02 /* WJKVideoPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039420C7918B00018A02 /* WJKVideoPlayerManager.m */; };
+		FAE403A920C7918B00018A02 /* WJKVideoPlayerCachePath.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039620C7918B00018A02 /* WJKVideoPlayerCachePath.m */; };
+		FAE403AF20C7A7D800018A02 /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE403AD20C7A7D800018A02 /* CircleProgressBar.m */; };
+		FAE403B220C7AC1600018A02 /* WJKVideoPlayerDownloadControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE403B020C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.m */; };
+		FAE403B420C7AE5400018A02 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE403B320C7AE5400018A02 /* Launch Screen.storyboard */; };
+		FED16C083CBC5252495AF325 /* libPods-WJKVideoPlayerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F19C7C74F77333B90C5FCFF /* libPods-WJKVideoPlayerDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FAE4035220C7913C00018A02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAE4033120C7913C00018A02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAE4033820C7913C00018A02;
+			remoteInfo = WJKVideoPlayerDemo;
+		};
+		FAE4035D20C7913C00018A02 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAE4033120C7913C00018A02 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FAE4033820C7913C00018A02;
+			remoteInfo = WJKVideoPlayerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F59834BC836CE931878E170 /* Pods-WJKVideoPlayerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJKVideoPlayerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2F19C7C74F77333B90C5FCFF /* libPods-WJKVideoPlayerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WJKVideoPlayerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3E65D515305012E2BEB6D12 /* Pods-WJKVideoPlayerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJKVideoPlayerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		FAE4033920C7913C00018A02 /* WJKVideoPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WJKVideoPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE4033C20C7913C00018A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAE4033D20C7913C00018A02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAE4033F20C7913C00018A02 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FAE4034020C7913C00018A02 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FAE4034320C7913C00018A02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FAE4034520C7913C00018A02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAE4034A20C7913C00018A02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAE4034B20C7913C00018A02 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAE4035120C7913C00018A02 /* WJKVideoPlayerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WJKVideoPlayerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE4035C20C7913C00018A02 /* WJKVideoPlayerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WJKVideoPlayerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAE4036F20C7918B00018A02 /* WJKResourceLoadingRequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKResourceLoadingRequestTask.h; sourceTree = "<group>"; };
+		FAE4037020C7918B00018A02 /* WJKVideoPlayerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerKit.h; sourceTree = "<group>"; };
+		FAE4037120C7918B00018A02 /* WJKVideoPlayerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerDownloader.h; sourceTree = "<group>"; };
+		FAE4037220C7918B00018A02 /* WJKVideoPlayerCacheFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerCacheFile.h; sourceTree = "<group>"; };
+		FAE4037320C7918B00018A02 /* UITableView+WebVideoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+WebVideoCache.h"; sourceTree = "<group>"; };
+		FAE4037420C7918B00018A02 /* UIViewController+PlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PlayerRotation.m"; sourceTree = "<group>"; };
+		FAE4037520C7918B00018A02 /* WJKVideoPlayerSupportUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerSupportUtils.h; sourceTree = "<group>"; };
+		FAE4037620C7918B00018A02 /* WJKVideoPlayerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerProtocol.h; sourceTree = "<group>"; };
+		FAE4037720C7918B00018A02 /* UIView+WebVideoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebVideoCache.m"; sourceTree = "<group>"; };
+		FAE4037820C7918B00018A02 /* WJKVideoPlayerResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerResourceLoader.h; sourceTree = "<group>"; };
+		FAE4037920C7918B00018A02 /* WJKVideoPlayerCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerCache.h; sourceTree = "<group>"; };
+		FAE4037A20C7918B00018A02 /* WJKVideoPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WJKVideoPlayer.bundle; sourceTree = "<group>"; };
+		FAE4037B20C7918B00018A02 /* WJKVideoPlayerCachePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerCachePath.h; sourceTree = "<group>"; };
+		FAE4037C20C7918B00018A02 /* WJKVideoPlayerCompat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerCompat.m; sourceTree = "<group>"; };
+		FAE4037D20C7918B00018A02 /* WJKVideoPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerManager.h; sourceTree = "<group>"; };
+		FAE4037E20C7918B00018A02 /* UITableViewCell+WebVideoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+WebVideoCache.h"; sourceTree = "<group>"; };
+		FAE4037F20C7918B00018A02 /* WJKVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayer.h; sourceTree = "<group>"; };
+		FAE4038020C7918B00018A02 /* WJKVideoPlayerSupportUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerSupportUtils.m; sourceTree = "<group>"; };
+		FAE4038120C7918B00018A02 /* UIViewController+PlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PlayerRotation.h"; sourceTree = "<group>"; };
+		FAE4038220C7918B00018A02 /* UITableView+WebVideoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+WebVideoCache.m"; sourceTree = "<group>"; };
+		FAE4038320C7918B00018A02 /* WJKVideoPlayerCacheFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerCacheFile.m; sourceTree = "<group>"; };
+		FAE4038420C7918B00018A02 /* WJKVideoPlayerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerDownloader.m; sourceTree = "<group>"; };
+		FAE4038520C7918B00018A02 /* WJKResourceLoadingRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKResourceLoadingRequestTask.m; sourceTree = "<group>"; };
+		FAE4038620C7918B00018A02 /* UIView+WebVideoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebVideoCache.h"; sourceTree = "<group>"; };
+		FAE4038920C7918B00018A02 /* WJKVideoPlayerBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerBrightnessView.m; sourceTree = "<group>"; };
+		FAE4038B20C7918B00018A02 /* WJKVideoPlayerControlViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerControlViews.h; sourceTree = "<group>"; };
+		FAE4038C20C7918B00018A02 /* WJKVideoPlayerBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerBrightnessView.h; sourceTree = "<group>"; };
+		FAE4038F20C7918B00018A02 /* WJKVideoPlayerControlViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerControlViews.m; sourceTree = "<group>"; };
+		FAE4039020C7918B00018A02 /* WJKVideoPlayerCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerCache.m; sourceTree = "<group>"; };
+		FAE4039120C7918B00018A02 /* WJKVideoPlayerResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerResourceLoader.m; sourceTree = "<group>"; };
+		FAE4039220C7918B00018A02 /* WJKVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayer.m; sourceTree = "<group>"; };
+		FAE4039320C7918B00018A02 /* UITableViewCell+WebVideoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+WebVideoCache.m"; sourceTree = "<group>"; };
+		FAE4039420C7918B00018A02 /* WJKVideoPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerManager.m; sourceTree = "<group>"; };
+		FAE4039520C7918B00018A02 /* WJKVideoPlayerCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerCompat.h; sourceTree = "<group>"; };
+		FAE4039620C7918B00018A02 /* WJKVideoPlayerCachePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerCachePath.m; sourceTree = "<group>"; };
+		FAE403AA20C7A6D900018A02 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		FAE403AD20C7A7D800018A02 /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
+		FAE403AE20C7A7D800018A02 /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
+		FAE403B020C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerDownloadControlView.m; sourceTree = "<group>"; };
+		FAE403B120C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerDownloadControlView.h; sourceTree = "<group>"; };
+		FAE403B320C7AE5400018A02 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAE4033620C7913C00018A02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FED16C083CBC5252495AF325 /* libPods-WJKVideoPlayerDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4034E20C7913C00018A02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4035920C7913C00018A02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61D7A3D8A0787DDB4A930F77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F19C7C74F77333B90C5FCFF /* libPods-WJKVideoPlayerDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE2BF11C0197E7F98CCE77BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3E65D515305012E2BEB6D12 /* Pods-WJKVideoPlayerDemo.debug.xcconfig */,
+				0F59834BC836CE931878E170 /* Pods-WJKVideoPlayerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAE4033020C7913C00018A02 = {
+			isa = PBXGroup;
+			children = (
+				FAE4033B20C7913C00018A02 /* WJKVideoPlayerDemo */,
+				FAE4033A20C7913C00018A02 /* Products */,
+				DE2BF11C0197E7F98CCE77BA /* Pods */,
+				61D7A3D8A0787DDB4A930F77 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FAE4033A20C7913C00018A02 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4033920C7913C00018A02 /* WJKVideoPlayerDemo.app */,
+				FAE4035120C7913C00018A02 /* WJKVideoPlayerDemoTests.xctest */,
+				FAE4035C20C7913C00018A02 /* WJKVideoPlayerDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAE4033B20C7913C00018A02 /* WJKVideoPlayerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4036E20C7918B00018A02 /* WJKVideoPlayer */,
+				FAE4033C20C7913C00018A02 /* AppDelegate.h */,
+				FAE4033D20C7913C00018A02 /* AppDelegate.m */,
+				FAE4033F20C7913C00018A02 /* ViewController.h */,
+				FAE4034020C7913C00018A02 /* ViewController.m */,
+				FAE403B120C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.h */,
+				FAE403B020C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.m */,
+				FAE403AA20C7A6D900018A02 /* PrefixHeader.pch */,
+				FAE4034220C7913C00018A02 /* Main.storyboard */,
+				FAE403B320C7AE5400018A02 /* Launch Screen.storyboard */,
+				FAE4034520C7913C00018A02 /* Assets.xcassets */,
+				FAE403AB20C7A7D700018A02 /* Frameworks */,
+				FAE4034A20C7913C00018A02 /* Info.plist */,
+				FAE4034B20C7913C00018A02 /* main.m */,
+			);
+			path = WJKVideoPlayerDemo;
+			sourceTree = "<group>";
+		};
+		FAE4036E20C7918B00018A02 /* WJKVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4038720C7918B00018A02 /* ControlViews */,
+				FAE4037020C7918B00018A02 /* WJKVideoPlayerKit.h */,
+				FAE4037620C7918B00018A02 /* WJKVideoPlayerProtocol.h */,
+				FAE4037F20C7918B00018A02 /* WJKVideoPlayer.h */,
+				FAE4039220C7918B00018A02 /* WJKVideoPlayer.m */,
+				FAE4037D20C7918B00018A02 /* WJKVideoPlayerManager.h */,
+				FAE4039420C7918B00018A02 /* WJKVideoPlayerManager.m */,
+				FAE4039520C7918B00018A02 /* WJKVideoPlayerCompat.h */,
+				FAE4037C20C7918B00018A02 /* WJKVideoPlayerCompat.m */,
+				FAE4037520C7918B00018A02 /* WJKVideoPlayerSupportUtils.h */,
+				FAE4038020C7918B00018A02 /* WJKVideoPlayerSupportUtils.m */,
+				FAE4037720C7918B00018A02 /* UIView+WebVideoCache.m */,
+				FAE4038620C7918B00018A02 /* UIView+WebVideoCache.h */,
+				FAE4037320C7918B00018A02 /* UITableView+WebVideoCache.h */,
+				FAE4038220C7918B00018A02 /* UITableView+WebVideoCache.m */,
+				FAE4037E20C7918B00018A02 /* UITableViewCell+WebVideoCache.h */,
+				FAE4039320C7918B00018A02 /* UITableViewCell+WebVideoCache.m */,
+				FAE4038120C7918B00018A02 /* UIViewController+PlayerRotation.h */,
+				FAE4037420C7918B00018A02 /* UIViewController+PlayerRotation.m */,
+				FAE4037120C7918B00018A02 /* WJKVideoPlayerDownloader.h */,
+				FAE4038420C7918B00018A02 /* WJKVideoPlayerDownloader.m */,
+				FAE4037820C7918B00018A02 /* WJKVideoPlayerResourceLoader.h */,
+				FAE4039120C7918B00018A02 /* WJKVideoPlayerResourceLoader.m */,
+				FAE4036F20C7918B00018A02 /* WJKResourceLoadingRequestTask.h */,
+				FAE4038520C7918B00018A02 /* WJKResourceLoadingRequestTask.m */,
+				FAE4037920C7918B00018A02 /* WJKVideoPlayerCache.h */,
+				FAE4039020C7918B00018A02 /* WJKVideoPlayerCache.m */,
+				FAE4037B20C7918B00018A02 /* WJKVideoPlayerCachePath.h */,
+				FAE4039620C7918B00018A02 /* WJKVideoPlayerCachePath.m */,
+				FAE4037220C7918B00018A02 /* WJKVideoPlayerCacheFile.h */,
+				FAE4038320C7918B00018A02 /* WJKVideoPlayerCacheFile.m */,
+				FAE4037A20C7918B00018A02 /* WJKVideoPlayer.bundle */,
+			);
+			name = WJKVideoPlayer;
+			path = ../../WJKVideoPlayer;
+			sourceTree = "<group>";
+		};
+		FAE4038720C7918B00018A02 /* ControlViews */ = {
+			isa = PBXGroup;
+			children = (
+				FAE4038B20C7918B00018A02 /* WJKVideoPlayerControlViews.h */,
+				FAE4038F20C7918B00018A02 /* WJKVideoPlayerControlViews.m */,
+				FAE4038C20C7918B00018A02 /* WJKVideoPlayerBrightnessView.h */,
+				FAE4038920C7918B00018A02 /* WJKVideoPlayerBrightnessView.m */,
+			);
+			path = ControlViews;
+			sourceTree = "<group>";
+		};
+		FAE403AB20C7A7D700018A02 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAE403AC20C7A7D800018A02 /* CircleProgressBar */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAE403AC20C7A7D800018A02 /* CircleProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				FAE403AD20C7A7D800018A02 /* CircleProgressBar.m */,
+				FAE403AE20C7A7D800018A02 /* CircleProgressBar.h */,
+			);
+			path = CircleProgressBar;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAE4033820C7913C00018A02 /* WJKVideoPlayerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAE4036520C7913C00018A02 /* Build configuration list for PBXNativeTarget "WJKVideoPlayerDemo" */;
+			buildPhases = (
+				6FB2544AF8C871E9CB132172 /* [CP] Check Pods Manifest.lock */,
+				FAE4033520C7913C00018A02 /* Sources */,
+				FAE4033620C7913C00018A02 /* Frameworks */,
+				FAE4033720C7913C00018A02 /* Resources */,
+				40E53A6E636C80506D48913C /* [CP] Embed Pods Frameworks */,
+				1C26826BB436B848E9885999 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WJKVideoPlayerDemo;
+			productName = WJKVideoPlayerDemo;
+			productReference = FAE4033920C7913C00018A02 /* WJKVideoPlayerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FAE4035020C7913C00018A02 /* WJKVideoPlayerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAE4036820C7913C00018A02 /* Build configuration list for PBXNativeTarget "WJKVideoPlayerDemoTests" */;
+			buildPhases = (
+				FAE4034D20C7913C00018A02 /* Sources */,
+				FAE4034E20C7913C00018A02 /* Frameworks */,
+				FAE4034F20C7913C00018A02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAE4035320C7913C00018A02 /* PBXTargetDependency */,
+			);
+			name = WJKVideoPlayerDemoTests;
+			productName = WJKVideoPlayerDemoTests;
+			productReference = FAE4035120C7913C00018A02 /* WJKVideoPlayerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FAE4035B20C7913C00018A02 /* WJKVideoPlayerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAE4036B20C7913C00018A02 /* Build configuration list for PBXNativeTarget "WJKVideoPlayerDemoUITests" */;
+			buildPhases = (
+				FAE4035820C7913C00018A02 /* Sources */,
+				FAE4035920C7913C00018A02 /* Frameworks */,
+				FAE4035A20C7913C00018A02 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAE4035E20C7913C00018A02 /* PBXTargetDependency */,
+			);
+			name = WJKVideoPlayerDemoUITests;
+			productName = WJKVideoPlayerDemoUITests;
+			productReference = FAE4035C20C7913C00018A02 /* WJKVideoPlayerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAE4033120C7913C00018A02 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Zeaho;
+				TargetAttributes = {
+					FAE4033820C7913C00018A02 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					FAE4035020C7913C00018A02 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FAE4033820C7913C00018A02;
+					};
+					FAE4035B20C7913C00018A02 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FAE4033820C7913C00018A02;
+					};
+				};
+			};
+			buildConfigurationList = FAE4033420C7913C00018A02 /* Build configuration list for PBXProject "WJKVideoPlayerDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FAE4033020C7913C00018A02;
+			productRefGroup = FAE4033A20C7913C00018A02 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAE4033820C7913C00018A02 /* WJKVideoPlayerDemo */,
+				FAE4035020C7913C00018A02 /* WJKVideoPlayerDemoTests */,
+				FAE4035B20C7913C00018A02 /* WJKVideoPlayerDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAE4033720C7913C00018A02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAE4039920C7918B00018A02 /* WJKVideoPlayer.bundle in Resources */,
+				FAE4034620C7913C00018A02 /* Assets.xcassets in Resources */,
+				FAE403B420C7AE5400018A02 /* Launch Screen.storyboard in Resources */,
+				FAE4034420C7913C00018A02 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4034F20C7913C00018A02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4035A20C7913C00018A02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1C26826BB436B848E9885999 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40E53A6E636C80506D48913C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FB2544AF8C871E9CB132172 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WJKVideoPlayerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAE4033520C7913C00018A02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAE4034120C7913C00018A02 /* ViewController.m in Sources */,
+				FAE4039D20C7918B00018A02 /* WJKVideoPlayerCacheFile.m in Sources */,
+				FAE4039F20C7918B00018A02 /* WJKResourceLoadingRequestTask.m in Sources */,
+				FAE403A920C7918B00018A02 /* WJKVideoPlayerCachePath.m in Sources */,
+				FAE4039A20C7918B00018A02 /* WJKVideoPlayerCompat.m in Sources */,
+				FAE403A420C7918B00018A02 /* WJKVideoPlayerCache.m in Sources */,
+				FAE4039820C7918B00018A02 /* UIView+WebVideoCache.m in Sources */,
+				FAE403A020C7918B00018A02 /* WJKVideoPlayerBrightnessView.m in Sources */,
+				FAE403A720C7918B00018A02 /* UITableViewCell+WebVideoCache.m in Sources */,
+				FAE403A320C7918B00018A02 /* WJKVideoPlayerControlViews.m in Sources */,
+				FAE403A620C7918B00018A02 /* WJKVideoPlayer.m in Sources */,
+				FAE4039C20C7918B00018A02 /* UITableView+WebVideoCache.m in Sources */,
+				FAE403AF20C7A7D800018A02 /* CircleProgressBar.m in Sources */,
+				FAE403B220C7AC1600018A02 /* WJKVideoPlayerDownloadControlView.m in Sources */,
+				FAE403A820C7918B00018A02 /* WJKVideoPlayerManager.m in Sources */,
+				FAE4039B20C7918B00018A02 /* WJKVideoPlayerSupportUtils.m in Sources */,
+				FAE403A520C7918B00018A02 /* WJKVideoPlayerResourceLoader.m in Sources */,
+				FAE4039E20C7918B00018A02 /* WJKVideoPlayerDownloader.m in Sources */,
+				FAE4034C20C7913C00018A02 /* main.m in Sources */,
+				FAE4033E20C7913C00018A02 /* AppDelegate.m in Sources */,
+				FAE4039720C7918B00018A02 /* UIViewController+PlayerRotation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4034D20C7913C00018A02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4035820C7913C00018A02 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAE4035320C7913C00018A02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAE4033820C7913C00018A02 /* WJKVideoPlayerDemo */;
+			targetProxy = FAE4035220C7913C00018A02 /* PBXContainerItemProxy */;
+		};
+		FAE4035E20C7913C00018A02 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FAE4033820C7913C00018A02 /* WJKVideoPlayerDemo */;
+			targetProxy = FAE4035D20C7913C00018A02 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FAE4034220C7913C00018A02 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAE4034320C7913C00018A02 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAE4036320C7913C00018A02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FAE4036420C7913C00018A02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FAE4036620C7913C00018A02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3E65D515305012E2BEB6D12 /* Pods-WJKVideoPlayerDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WJKVideoPlayerDemo/PrefixHeader.pch";
+				INFOPLIST_FILE = WJKVideoPlayerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FAE4036720C7913C00018A02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F59834BC836CE931878E170 /* Pods-WJKVideoPlayerDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WJKVideoPlayerDemo/PrefixHeader.pch";
+				INFOPLIST_FILE = WJKVideoPlayerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FAE4036920C7913C00018A02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
+				INFOPLIST_FILE = WJKVideoPlayerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WJKVideoPlayerDemo.app/WJKVideoPlayerDemo";
+			};
+			name = Debug;
+		};
+		FAE4036A20C7913C00018A02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
+				INFOPLIST_FILE = WJKVideoPlayerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WJKVideoPlayerDemo.app/WJKVideoPlayerDemo";
+			};
+			name = Release;
+		};
+		FAE4036C20C7913C00018A02 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
+				INFOPLIST_FILE = WJKVideoPlayerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WJKVideoPlayerDemo;
+			};
+			name = Debug;
+		};
+		FAE4036D20C7913C00018A02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
+				INFOPLIST_FILE = WJKVideoPlayerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WJKVideoPlayerDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAE4033420C7913C00018A02 /* Build configuration list for PBXProject "WJKVideoPlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAE4036320C7913C00018A02 /* Debug */,
+				FAE4036420C7913C00018A02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAE4036520C7913C00018A02 /* Build configuration list for PBXNativeTarget "WJKVideoPlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAE4036620C7913C00018A02 /* Debug */,
+				FAE4036720C7913C00018A02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAE4036820C7913C00018A02 /* Build configuration list for PBXNativeTarget "WJKVideoPlayerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAE4036920C7913C00018A02 /* Debug */,
+				FAE4036A20C7913C00018A02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAE4036B20C7913C00018A02 /* Build configuration list for PBXNativeTarget "WJKVideoPlayerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAE4036C20C7913C00018A02 /* Debug */,
+				FAE4036D20C7913C00018A02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAE4033120C7913C00018A02 /* Project object */;
+}
