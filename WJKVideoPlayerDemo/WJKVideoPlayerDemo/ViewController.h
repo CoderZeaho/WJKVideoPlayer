@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Zeaho. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "WJKBaseTableViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : WJKBaseTableViewController
 
 
 @end

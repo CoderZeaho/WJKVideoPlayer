@@ -44,7 +44,7 @@
         [self addSubview:toolbar];
         
         self.backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 79, 76)];
-        self.backImage.image        = [UIImage imageNamed:@"video_player_brightness"];
+        self.backImage.image        = [UIImage imageNamed:@"WJKVideoPlayer.bundle/wjk_videoplayer_brightness"];
         [self addSubview:self.backImage];
 		
         self.title      = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.bounds.size.width, 30)];

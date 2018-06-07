@@ -30,8 +30,10 @@
 		FAE403A820C7918B00018A02 /* WJKVideoPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039420C7918B00018A02 /* WJKVideoPlayerManager.m */; };
 		FAE403A920C7918B00018A02 /* WJKVideoPlayerCachePath.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039620C7918B00018A02 /* WJKVideoPlayerCachePath.m */; };
 		FAE403AF20C7A7D800018A02 /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE403AD20C7A7D800018A02 /* CircleProgressBar.m */; };
-		FAE403B220C7AC1600018A02 /* WJKVideoPlayerDownloadControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE403B020C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.m */; };
 		FAE403B420C7AE5400018A02 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE403B320C7AE5400018A02 /* Launch Screen.storyboard */; };
+		FAFF8DA620C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF8DA420C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m */; };
+		FAFF8DA920C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF8DA820C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m */; };
+		FAFF8DAC20C9306700400AF1 /* WJKBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFF8DAB20C9306700400AF1 /* WJKBaseTableViewController.m */; };
 		FED16C083CBC5252495AF325 /* libPods-WJKVideoPlayerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F19C7C74F77333B90C5FCFF /* libPods-WJKVideoPlayerDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -105,9 +107,13 @@
 		FAE403AA20C7A6D900018A02 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		FAE403AD20C7A7D800018A02 /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
 		FAE403AE20C7A7D800018A02 /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
-		FAE403B020C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerDownloadControlView.m; sourceTree = "<group>"; };
-		FAE403B120C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerDownloadControlView.h; sourceTree = "<group>"; };
 		FAE403B320C7AE5400018A02 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FAFF8DA420C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerBasicControlView.m; sourceTree = "<group>"; };
+		FAFF8DA520C92E8400400AF1 /* WJKVideoPlayerBasicControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerBasicControlView.h; sourceTree = "<group>"; };
+		FAFF8DA720C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJKBasicVideoPlayerViewController.h; sourceTree = "<group>"; };
+		FAFF8DA820C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJKBasicVideoPlayerViewController.m; sourceTree = "<group>"; };
+		FAFF8DAA20C9306700400AF1 /* WJKBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKBaseTableViewController.h; sourceTree = "<group>"; };
+		FAFF8DAB20C9306700400AF1 /* WJKBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKBaseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,13 +187,14 @@
 				FAE4033D20C7913C00018A02 /* AppDelegate.m */,
 				FAE4033F20C7913C00018A02 /* ViewController.h */,
 				FAE4034020C7913C00018A02 /* ViewController.m */,
-				FAE403B120C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.h */,
-				FAE403B020C7AC1500018A02 /* WJKVideoPlayerDownloadControlView.m */,
 				FAE403AA20C7A6D900018A02 /* PrefixHeader.pch */,
+				FAFF8DA120C92E8400400AF1 /* BasicVideoPlayer */,
 				FAE4034220C7913C00018A02 /* Main.storyboard */,
 				FAE403B320C7AE5400018A02 /* Launch Screen.storyboard */,
 				FAE4034520C7913C00018A02 /* Assets.xcassets */,
 				FAE403AB20C7A7D700018A02 /* Frameworks */,
+				FAFF8DAA20C9306700400AF1 /* WJKBaseTableViewController.h */,
+				FAFF8DAB20C9306700400AF1 /* WJKBaseTableViewController.m */,
 				FAE4034A20C7913C00018A02 /* Info.plist */,
 				FAE4034B20C7913C00018A02 /* main.m */,
 			);
@@ -260,6 +267,33 @@
 				FAE403AE20C7A7D800018A02 /* CircleProgressBar.h */,
 			);
 			path = CircleProgressBar;
+			sourceTree = "<group>";
+		};
+		FAFF8DA120C92E8400400AF1 /* BasicVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF8DA220C92E8400400AF1 /* Controller */,
+				FAFF8DA320C92E8400400AF1 /* View */,
+			);
+			path = BasicVideoPlayer;
+			sourceTree = "<group>";
+		};
+		FAFF8DA220C92E8400400AF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF8DA720C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.h */,
+				FAFF8DA820C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FAFF8DA320C92E8400400AF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF8DA520C92E8400400AF1 /* WJKVideoPlayerBasicControlView.h */,
+				FAFF8DA420C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,19 +485,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE4034120C7913C00018A02 /* ViewController.m in Sources */,
+				FAFF8DA620C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m in Sources */,
 				FAE4039D20C7918B00018A02 /* WJKVideoPlayerCacheFile.m in Sources */,
 				FAE4039F20C7918B00018A02 /* WJKResourceLoadingRequestTask.m in Sources */,
 				FAE403A920C7918B00018A02 /* WJKVideoPlayerCachePath.m in Sources */,
 				FAE4039A20C7918B00018A02 /* WJKVideoPlayerCompat.m in Sources */,
 				FAE403A420C7918B00018A02 /* WJKVideoPlayerCache.m in Sources */,
+				FAFF8DA920C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m in Sources */,
 				FAE4039820C7918B00018A02 /* UIView+WebVideoCache.m in Sources */,
 				FAE403A020C7918B00018A02 /* WJKVideoPlayerBrightnessView.m in Sources */,
 				FAE403A720C7918B00018A02 /* UITableViewCell+WebVideoCache.m in Sources */,
 				FAE403A320C7918B00018A02 /* WJKVideoPlayerControlViews.m in Sources */,
+				FAFF8DAC20C9306700400AF1 /* WJKBaseTableViewController.m in Sources */,
 				FAE403A620C7918B00018A02 /* WJKVideoPlayer.m in Sources */,
 				FAE4039C20C7918B00018A02 /* UITableView+WebVideoCache.m in Sources */,
 				FAE403AF20C7A7D800018A02 /* CircleProgressBar.m in Sources */,
-				FAE403B220C7AC1600018A02 /* WJKVideoPlayerDownloadControlView.m in Sources */,
 				FAE403A820C7918B00018A02 /* WJKVideoPlayerManager.m in Sources */,
 				FAE4039B20C7918B00018A02 /* WJKVideoPlayerSupportUtils.m in Sources */,
 				FAE403A520C7918B00018A02 /* WJKVideoPlayerResourceLoader.m in Sources */,
