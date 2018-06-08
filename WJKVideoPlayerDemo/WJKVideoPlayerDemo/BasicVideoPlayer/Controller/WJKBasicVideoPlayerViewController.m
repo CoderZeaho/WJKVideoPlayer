@@ -60,6 +60,8 @@ static const CGFloat kVideoPlayerHeight = 200.f;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+    
     [[self navigationController] setNavigationBarHidden:YES animated:animated];
     
     if (self.videoContainer.wjk_playerStatus == WJKVideoPlayerStatusPause) {
@@ -114,6 +116,10 @@ static const CGFloat kVideoPlayerHeight = 200.f;
 }
 
 #pragma mark - accessor
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 - (UIEdgeInsets)contentInset{
     return UIEdgeInsetsMake(iPhoneX ? kStatusBarHeight + kVideoPlayerHeight : kVideoPlayerHeight, 0, 0, 0);
 }

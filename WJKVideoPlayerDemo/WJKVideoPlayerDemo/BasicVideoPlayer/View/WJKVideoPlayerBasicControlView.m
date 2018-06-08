@@ -35,14 +35,9 @@
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self addSubview:[self backButton]];
-    
-    [[self brightnessView] removeFromSuperview];
-    [self addSubview:[self brightnessView]];
 }
 
 - (void)_configurateSubviewsDefault {
-    
-    self.cancleGravitySensing = YES;
     
     [[self backButton] setImage:[UIImage imageNamed:@"WJKVideoPlayer.bundle/wjk_videoplayer_back"] forState:UIControlStateNormal];
     [[self backButton] addTarget:self action:@selector(didClickedBackButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -50,16 +45,10 @@
 
 - (void)_installConstraints {
     
-    // 返回按钮约束
     [[self backButton] makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(32.5);
         make.left.mas_equalTo(self.mas_left).mas_offset(5);
         make.width.height.mas_equalTo(44);
-    }];
-    
-    [[self brightnessView] mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self);
-        make.width.height.mas_equalTo(155);
     }];
 }
 
@@ -94,8 +83,12 @@
         
         // 手动全屏(非重力感应)后退出全屏状态需要重新添加亮度调节视图,防止位置出错
         [[self brightnessView] removeFromSuperview];
-        [[UIApplication sharedApplication].keyWindow addSubview:self.brightnessView];
-        
+        [[UIApplication sharedApplication].keyWindow addSubview:[self brightnessView]];
+        [[self brightnessView] mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(155);
+            make.leading.mas_equalTo((SCREENHEIGHT-155)/2);
+            make.top.mas_equalTo((SCREENWIDTH-155)/2);
+        }];
     } else {}
 }
 
@@ -125,10 +118,14 @@
     if ([[self delegate] respondsToSelector:@selector(videoPlayerControlView:clickBackButton:completion:)]) {
         [[self delegate] videoPlayerControlView:self clickBackButton:sender completion:^(BOOL isFullScreen) {
             if (!isFullScreen) {
-                
                 // 手动全屏(非重力感应)后退出全屏状态需要重新添加亮度调节视图,防止位置出错
                 [[self brightnessView] removeFromSuperview];
                 [[UIApplication sharedApplication].keyWindow addSubview:[self brightnessView]];
+                [[self brightnessView] mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.width.height.mas_equalTo(155);
+                    make.leading.mas_equalTo((SCREENWIDTH-155)/2);
+                    make.top.mas_equalTo((SCREENHEIGHT-155)/2);
+                }];
             }
         }];
     }
@@ -137,7 +134,7 @@
 #pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     if (
-        [touch.view isDescendantOfView:[self controlBar]]) {
+        [[touch view] isDescendantOfView:[self controlBar]]) {
         return NO;
     }
     return YES;
