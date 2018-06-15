@@ -572,7 +572,7 @@ didReceiveLoadingRequestTask:(WJKResourceLoadingRequestWebTask *)requestTask {
 
 - (void)checkBufferingTimeDidChange {
     NSTimeInterval currentTime = CMTimeGetSeconds(self.playerModel.player.currentTime);
-    if (currentTime != 0 && currentTime > (self.playerModel.lastTime + 0.1)) {
+    if (currentTime != 0 && currentTime > self.playerModel.lastTime) {
         self.playerModel.lastTime = currentTime;
         [self endAwakeFromBuffering];
         if(self.playerStatus == WJKVideoPlayerStatusPlaying){

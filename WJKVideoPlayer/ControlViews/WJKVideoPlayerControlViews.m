@@ -162,7 +162,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
         view.maximumTrackTintColor = [UIColor clearColor];
         [view addTarget:self action:@selector(dragSliderDidDrag:) forControlEvents:UIControlEventValueChanged];
         [view addTarget:self action:@selector(dragSliderDidStart:) forControlEvents:UIControlEventTouchDown];
-        [view addTarget:self action:@selector(dragSliderDidEnd:) forControlEvents:UIControlEventTouchUpInside];
+        [view addTarget:self action:@selector(dragSliderDidEnd:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
         [self addSubview:view];
 
         view;
@@ -191,6 +191,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     }
     [self updateCacheProgressViewIfNeed];
     [self.playerView wjk_seekToTime:CMTimeMakeWithSeconds([self fetchElapsedTimeInterval], 1000)];
+    [self.playerView wjk_resume];
 }
 
 - (void)updateCacheProgressViewIfNeed {
