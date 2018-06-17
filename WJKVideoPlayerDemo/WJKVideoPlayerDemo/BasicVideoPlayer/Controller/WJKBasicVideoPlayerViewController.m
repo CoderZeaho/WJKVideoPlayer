@@ -8,6 +8,7 @@
 
 #import "WJKBasicVideoPlayerViewController.h"
 #import "WJKVideoPlayerBasicControlView.h"
+#import "WJKOtherViewController.h"
 
 // tools
 #import "WJKVideoPlayerKit.h"
@@ -74,8 +75,8 @@ static const CGFloat kVideoPlayerHeight = 200.f;
     
     [[self navigationController] setNavigationBarHidden:NO animated:animated];
     
-    if (self.videoContainer.wjk_playerStatus == WJKVideoPlayerStatusPlaying) {
-        [[self videoContainer] wjk_resume];
+    if (self.videoContainer.wjk_playerStatus == WJKVideoPlayerStatusPlaying || self.videoContainer.wjk_playerStatus == WJKVideoPlayerStatusBuffering) {
+        [[self videoContainer] wjk_pause];
     }
 }
 
@@ -93,6 +94,11 @@ static const CGFloat kVideoPlayerHeight = 200.f;
                         configurationCompletion:nil];
     
     [[self tableView] reloadData];
+}
+
+- (void)_transitOtherViewController {
+    WJKOtherViewController *otherViewController = [[WJKOtherViewController alloc] init];
+    [[self navigationController] pushViewController:otherViewController animated:YES];
 }
 
 #pragma mark - WJKVideoPlayerBasicControlViewDelegate
@@ -153,6 +159,12 @@ static const CGFloat kVideoPlayerHeight = 200.f;
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self _transitOtherViewController];
 }
 
 - (void)didReceiveMemoryWarning {

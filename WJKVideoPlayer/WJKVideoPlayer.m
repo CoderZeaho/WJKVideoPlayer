@@ -512,8 +512,6 @@ didReceiveLoadingRequestTask:(WJKResourceLoadingRequestWebTask *)requestTask {
                 self.playerStatus = WJKVideoPlayerStatusReadyToPlay;
                 // When get ready to play note, we can go to play, and can add the video picture on show view.
                 if (!self.playerModel) return;
-                [self callPlayerStatusDidChangeDelegateMethod];
-                [self.playerModel.player play];
                 [self displayVideoPicturesOnShowLayer];
             }
                 break;

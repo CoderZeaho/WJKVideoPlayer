@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3C38DC20D63C3900721F59 /* WJKOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3C38DB20D63C3900721F59 /* WJKOtherViewController.m */; };
 		FAE4033E20C7913C00018A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4033D20C7913C00018A02 /* AppDelegate.m */; };
 		FAE4034120C7913C00018A02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4034020C7913C00018A02 /* ViewController.m */; };
 		FAE4034420C7913C00018A02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE4034220C7913C00018A02 /* Main.storyboard */; };
@@ -58,6 +59,8 @@
 		0F59834BC836CE931878E170 /* Pods-WJKVideoPlayerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJKVideoPlayerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		2F19C7C74F77333B90C5FCFF /* libPods-WJKVideoPlayerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WJKVideoPlayerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3E65D515305012E2BEB6D12 /* Pods-WJKVideoPlayerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJKVideoPlayerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		FA3C38DA20D63C3900721F59 /* WJKOtherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJKOtherViewController.h; sourceTree = "<group>"; };
+		FA3C38DB20D63C3900721F59 /* WJKOtherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJKOtherViewController.m; sourceTree = "<group>"; };
 		FAE4033920C7913C00018A02 /* WJKVideoPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WJKVideoPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE4033C20C7913C00018A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAE4033D20C7913C00018A02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 			children = (
 				FAFF8DA720C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.h */,
 				FAFF8DA820C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m */,
+				FA3C38DA20D63C3900721F59 /* WJKOtherViewController.h */,
+				FA3C38DB20D63C3900721F59 /* WJKOtherViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,7 +366,7 @@
 		FAE4033120C7913C00018A02 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Zeaho;
 				TargetAttributes = {
 					FAE4033820C7913C00018A02 = {
@@ -484,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3C38DC20D63C3900721F59 /* WJKOtherViewController.m in Sources */,
 				FAE4034120C7913C00018A02 /* ViewController.m in Sources */,
 				FAFF8DA620C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m in Sources */,
 				FAE4039D20C7918B00018A02 /* WJKVideoPlayerCacheFile.m in Sources */,
@@ -565,6 +571,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -572,6 +579,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -620,6 +628,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -627,6 +636,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
