@@ -119,7 +119,7 @@ playFailedWithError:(NSError *)error;
  * @param url                     The video url to play.
  * @param fullVideoCachePath      The full video file path in disk.
  * @param showLayer               The layer to show the video display layer.
- * @param configurationCompletion The block will be call when video player config finished. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player config finished. because initialize player is not synchronize,
  *                                 so other category method is disabled before config finished.
  *
  * @return token (@see WJKPlayVideoManagerModel) that can be passed to -stopPlayVideo: to stop play.
@@ -128,7 +128,7 @@ playFailedWithError:(NSError *)error;
                                       fullVideoCachePath:(NSString *)fullVideoCachePath
                                                  options:(WJKVideoPlayerOptions)options
                                              showOnLayer:(CALayer *)showLayer
-                                 configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion;
+                                 configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion;
 
 /**
  * Play the not existed video from web.
@@ -144,7 +144,7 @@ playFailedWithError:(NSError *)error;
 - (WJKVideoPlayerModel *_Nullable)playVideoWithURL:(NSURL *)url
                                           options:(WJKVideoPlayerOptions)options
                                         showLayer:(CALayer *)showLayer
-                          configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion;
+                          configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion;
 
 /**
  * Call this method to resume play.
@@ -156,7 +156,7 @@ playFailedWithError:(NSError *)error;
  */
 - (void)resumePlayWithShowLayer:(CALayer *)showLayer
                         options:(WJKVideoPlayerOptions)options
-        configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion;
+        configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion;
 
 /**
  * This method used to seek to record playback when hava record playback history.

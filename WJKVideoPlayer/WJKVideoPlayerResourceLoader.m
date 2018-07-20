@@ -184,7 +184,9 @@ didCompleteWithError:(NSError *)error {
 
 - (void)startCurrentRequestWithLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
                                         range:(NSRange)dataRange {
-    WJKDebugLog(@"ResourceLoader 处理新的请求, 数据范围是: %@", NSStringFromRange(dataRange));
+    /// 是否已经完全缓存完成.
+    BOOL isCompleted = self.cacheFile.isCompleted;
+    WJKDebugLog(@"ResourceLoader 处理新的请求, 数据范围是: %@, 是否已经缓存完成: %@", NSStringFromRange(dataRange), isCompleted ? @"是" : @"否");
     if (dataRange.length == NSUIntegerMax) {
         [self addTaskWithLoadingRequest:loadingRequest
                                   range:NSMakeRange(dataRange.location, NSUIntegerMax)

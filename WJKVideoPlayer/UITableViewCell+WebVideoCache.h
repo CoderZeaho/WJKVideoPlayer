@@ -35,6 +35,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic) WJKVideoPlayerUnreachableCellType wjk_unreachableCellType;
 
+/**
+  * Returns a Boolean value that indicates whether a given cell is equal to
+  * the receiver using `jp_videoURL` comparison.
+  *
+  * @param cell The cell with which to compare the receiver.
+  *
+  * @return YES if cell is equivalent to the receiver (if they have the same `jp_videoURL` comparison), otherwise NO.
+  */
+- (BOOL)wjk_isEqualToCell:(UITableViewCell *)cell;
+
 @end
 
 NS_ASSUME_NONNULL_END

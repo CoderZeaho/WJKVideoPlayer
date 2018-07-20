@@ -77,11 +77,11 @@ static const NSString *const kWJKVideoPlayerContentRangeKey = @"Content-Range";
                                     cacheFile:(WJKVideoPlayerCacheFile *)cacheFile
                                     customURL:(NSURL *)customURL
                                        cached:(BOOL)cached {
-    return [[[self class] alloc] initWithLoadingRequest:loadingRequest
-                                           requestRange:requestRange
-                                              cacheFile:cacheFile
-                                              customURL:customURL
-                                                 cached:cached];
+        return [[self.class alloc] initWithLoadingRequest:loadingRequest
+                                             requestRange:requestRange
+                                                cacheFile:cacheFile
+                                                customURL:customURL
+                                                   cached:cached];
 }
 
 - (void)requestDidReceiveResponse:(NSURLResponse *)response {

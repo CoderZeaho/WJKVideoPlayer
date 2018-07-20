@@ -209,7 +209,7 @@ static NSString *WJKVideoPlayerURL = @"www.wujike.com.cn";
                              fullVideoCachePath:(NSString *)fullVideoCachePath
                                         options:(WJKVideoPlayerOptions)options
                                     showOnLayer:(CALayer *)showLayer
-                        configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+                        configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     if (!url.absoluteString.length) {
         [self callDelegateMethodWithError:WJKErrorWithDescription(@"The url is disable")];
         return nil;
@@ -249,7 +249,7 @@ static NSString *WJKVideoPlayerURL = @"www.wujike.com.cn";
 - (nullable WJKVideoPlayerModel *)playVideoWithURL:(NSURL *)url
                                           options:(WJKVideoPlayerOptions)options
                                         showLayer:(CALayer *)showLayer
-                          configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+                          configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     if (!url.absoluteString.length) {
         [self callDelegateMethodWithError:WJKErrorWithDescription(@"The url is disable")];
         return nil;
@@ -294,7 +294,7 @@ static NSString *WJKVideoPlayerURL = @"www.wujike.com.cn";
 
 - (void)resumePlayWithShowLayer:(CALayer *)showLayer
                         options:(WJKVideoPlayerOptions)options
-        configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+        configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     if (!showLayer) {
         [self callDelegateMethodWithError:WJKErrorWithDescription(@"The layer to display video layer is nil")];
         return;

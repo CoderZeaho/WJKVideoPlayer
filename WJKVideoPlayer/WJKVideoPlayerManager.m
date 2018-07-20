@@ -52,6 +52,7 @@
 
 @end
 
+static NSString * const WJKVideoPlayerSDKVersionKey = @"com.wjkvideoplayer.sdk.version.www";
 @implementation WJKVideoPlayerManager
 @synthesize volume;
 @synthesize muted;
@@ -59,11 +60,16 @@
 
 + (nonnull instancetype)sharedManager {
     static dispatch_once_t once;
-    static id instance;
+    static WJKVideoPlayerManager *wjkVideoPlayerManagerInstance;
     dispatch_once(&once, ^{
-        instance = [self new];
+        wjkVideoPlayerManagerInstance = [self new];
+        [[NSUserDefaults standardUserDefaults] setObject:@"3.1.1" forKey:WJKVideoPlayerSDKVersionKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [WJKMigration migrateToSDKVersion:@"3.1.1" block:^{
+            [wjkVideoPlayerManagerInstance.videoCache clearDiskOnCompletion:nil];
+            }];
     });
-    return instance;
+    return wjkVideoPlayerManagerInstance;
 }
 
 - (nonnull instancetype)init {
@@ -107,7 +113,7 @@
 - (void)playVideoWithURL:(NSURL *)url
              showOnLayer:(CALayer *)showLayer
                  options:(WJKVideoPlayerOptions)options
- configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+ configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     WJKMainThreadAssert;
     NSParameterAssert(showLayer);
     if(!url || !showLayer){
@@ -211,7 +217,7 @@
 - (void)resumePlayWithURL:(NSURL *)url
               showOnLayer:(CALayer *)showLayer
                   options:(WJKVideoPlayerOptions)options
-  configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+  configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     WJKMainThreadAssert;
     NSParameterAssert(url);
     if(!url){
@@ -256,6 +262,10 @@
     return [url absoluteString];
 }
 
+- (NSString *)SDKVersion {
+    NSString *res = [[NSUserDefaults standardUserDefaults] valueForKey:WJKVideoPlayerSDKVersionKey];
+    return (res ? res : @"");
+}
 
 #pragma mark - WJKVideoPlayerPlaybackProtocol
 
@@ -600,7 +610,7 @@ shouldResumePlaybackWhenApplicationDidBecomeActiveFromResignActiveForURL:self.ma
 - (void)playFragmentVideoWithURL:(NSURL *)url
                          options:(WJKVideoPlayerOptions)options
                        showLayer:(CALayer *)showLayer
-         configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+         configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     WJKVideoPlayerModel *model = [self.videoPlayer playVideoWithURL:url
                                                            options:options
                                                          showLayer:showLayer
@@ -617,7 +627,7 @@ shouldResumePlaybackWhenApplicationDidBecomeActiveFromResignActiveForURL:self.ma
 - (void)playLocalVideoWithShowLayer:(CALayer *)showLayer
                                 url:(NSURL *)url
                             options:(WJKVideoPlayerOptions)options
-            configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+            configurationCompletion:(WJKPlayVideoConfiguration)configurationCompletion {
     WJKDebugLog(@"Start play a local video: %@", url);
     // local file.
     NSString *path = [url.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""];

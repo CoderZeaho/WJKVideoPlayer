@@ -14,17 +14,71 @@
 #import "WJKVideoPlayerCompat.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@implementation NSURL (StripQuery)
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSString *)absoluteStringByStrippingQuery{
-    NSString *absoluteString = [self absoluteString];
-    NSUInteger queryLength = [[self query] length];
-    NSString* strippedString = (queryLength ? [absoluteString substringToIndex:[absoluteString length] - (queryLength + 1)] : absoluteString);
+@interface NSMutableString (WJKURLRequestFormatter)
+- (void)wjk_appendCommandLineArgument:(NSString *)arg;
 
-    if ([strippedString hasSuffix:@"?"]) {
-        strippedString = [strippedString substringToIndex:absoluteString.length-1];
+@end
+
+@implementation NSMutableString (WJKURLRequestFormatter)
+
+- (void)wjk_appendCommandLineArgument:(NSString *)arg {
+    [self appendFormat:@" %@", [arg stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     }
-    return strippedString;
+
+@end
+
+@interface WJKURLRequestFormatter : NSObject
+
+@end
+
+@implementation WJKURLRequestFormatter
+
++ (NSString *)cURLCommandFromURLRequest:(NSURLRequest *)request {
+    NSMutableString *command = [NSMutableString stringWithString:@"curl"];
+    [command wjk_appendCommandLineArgument:[NSString stringWithFormat:@"-X %@", [request HTTPMethod]]];
+
+    if ([[request HTTPBody] length] > 0) {
+        NSMutableString *HTTPBodyString = [[NSMutableString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding];
+        [HTTPBodyString replaceOccurrencesOfString:@"\\" withString:@"\\\\" options:0 range:NSMakeRange(0, [HTTPBodyString length])];
+        [HTTPBodyString replaceOccurrencesOfString:@"`" withString:@"\\`" options:0 range:NSMakeRange(0, [HTTPBodyString length])];
+        [HTTPBodyString replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:0 range:NSMakeRange(0, [HTTPBodyString length])];
+        [HTTPBodyString replaceOccurrencesOfString:@"$" withString:@"\\$" options:0 range:NSMakeRange(0, [HTTPBodyString length])];
+        [command wjk_appendCommandLineArgument:[NSString stringWithFormat:@"-d \"%@\"", HTTPBodyString]];
+    }
+    NSString *acceptEncodingHeader = [[request allHTTPHeaderFields] valueForKey:@"Accept-Encoding"];
+    if ([acceptEncodingHeader rangeOfString:@"gzip"].location != NSNotFound) {
+        [command wjk_appendCommandLineArgument:@"--compressed"];
+    }
+    if ([request URL]) {
+        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[request URL]];
+        if (cookies.count) {
+            NSMutableString *mutableCookieString = [NSMutableString string];
+            for (NSHTTPCookie *cookie in cookies) {
+                [mutableCookieString appendFormat:@"%@=%@;", cookie.name, cookie.value];
+                }
+            [command wjk_appendCommandLineArgument:[NSString stringWithFormat:@"--cookie \"%@\"", mutableCookieString]];
+            }
+        }
+    for (id field in [request allHTTPHeaderFields]) {
+        [command wjk_appendCommandLineArgument:[NSString stringWithFormat:@"-H %@", [NSString stringWithFormat:@"'%@: %@'", field, [[request valueForHTTPHeaderField:field] stringByReplacingOccurrencesOfString:@"\'" withString:@"\\\'"]]]];
+        }
+    [command wjk_appendCommandLineArgument:[NSString stringWithFormat:@"\"%@\"", [[request URL] absoluteString]]];
+    return [NSString stringWithString:command];
+}
+
+@end
+
+@implementation NSURL (cURL)
+
+- (NSString *)wjk_cURLCommand {
+    NSURLRequest *request = [NSURLRequest requestWithURL:self];
+    NSParameterAssert(request);
+    if(!request){
+        return nil;
+    }
+    return [WJKURLRequestFormatter cURLCommandFromURLRequest:request];
 }
 
 @end
@@ -611,7 +665,7 @@ NSString *kWJKSwizzleErrorDomain = @"com.wjkvideoplayer.swizzle.www";
     }
 
     // If the found cell is the cell playing video, this situation cannot play video again.
-    if(bestCell == self.playingVideoCell){
+    if([bestCell wjk_isEqualToCell:self.playingVideoCell]){
         return;
     }
 
@@ -620,3 +674,30 @@ NSString *kWJKSwizzleErrorDomain = @"com.wjkvideoplayer.swizzle.www";
 }
 
 @end
+
+static NSString * const WJKMigrationLastSDKVersionKey = @"com.wjkvideoplayer.last.migration.version.www";
+@implementation WJKMigration
+
++ (void)migrateToSDKVersion:(NSString *)version
+                      block:(dispatch_block_t)migrationBlock {
+    // version > lastMigrationVersion
+    if ([version compare:[self lastMigrationVersion] options:NSNumericSearch] == NSOrderedDescending) {
+        migrationBlock();
+        WJKDebugLog(@"JPMigration: Running migration for version %@", version);
+        [self setLastMigrationVersion:version];
+        }
+    }
+
++ (NSString *)lastMigrationVersion {
+    NSString *res = [[NSUserDefaults standardUserDefaults] valueForKey:WJKMigrationLastSDKVersionKey];
+    return (res ? res : @"");
+}
+
++ (void)setLastMigrationVersion:(NSString *)version {
+    [[NSUserDefaults standardUserDefaults] setValue:version forKey:WJKMigrationLastSDKVersionKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+
+@end
+    
+NS_ASSUME_NONNULL_END

@@ -289,12 +289,13 @@ static NSString *kWJKVideoPlayerVersion2CacheHasBeenClearedKey = @"com.wujike.ve
 
 - (NSString *)cachedFileNameForKey:(NSString *)key {
     NSParameterAssert(key);
-    if(!key){
+    if(!key.length){
         return nil;
     }
-    if ([key length]) {
-        NSString *strippedQueryKey = [[NSURL URLWithString:key] absoluteStringByStrippingQuery];
-        key = [strippedQueryKey length] ? strippedQueryKey : key;
+    
+    NSURL *url = [NSURL URLWithString:key];
+    if(url){
+        key = [url wjk_cURLCommand];
     }
     const char *str = key.UTF8String;
     if (str == NULL) str = "";

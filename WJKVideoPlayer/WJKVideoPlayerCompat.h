@@ -130,7 +130,7 @@ typedef NS_OPTIONS(NSUInteger, WJKVideoPlayerDownloaderOptions) {
     WJKVideoPlayerDownloaderAllowInvalidSSLCertificates = 1 << 3,
 };
 
-typedef void(^WJKPlayVideoConfigurationCompletion)(UIView *_Nonnull view, WJKVideoPlayerModel *_Nonnull playerModel);
+typedef void(^WJKPlayVideoConfiguration)(UIView *_Nonnull view, WJKVideoPlayerModel *_Nonnull playerModel);
 
 UIKIT_EXTERN NSString * _Nonnull const WJKVideoPlayerDownloadStartNotification;
 UIKIT_EXTERN NSString * _Nonnull const WJKVideoPlayerDownloadReceiveResponseNotification;

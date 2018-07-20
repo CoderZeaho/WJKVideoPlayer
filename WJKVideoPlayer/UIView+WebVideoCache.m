@@ -144,13 +144,13 @@
     [self wjk_playVideoWithURL:url
                       options:WJKVideoPlayerContinueInBackground |
                               WJKVideoPlayerLayerVideoGravityResizeAspect
-      configurationCompletion:nil];
+                configuration:nil];
 }
 
 - (void)wjk_playVideoMuteWithURL:(NSURL *)url
              bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                    progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-        configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion {
+                  configuration:(WJKPlayVideoConfiguration _Nullable)configuration {
     [self setBufferingIndicator:bufferingIndicator
                     controlView:nil
                    progressView:progressView
@@ -158,15 +158,14 @@
     [self wjk_stopPlay];
     [self wjk_playVideoWithURL:url
                       options:WJKVideoPlayerContinueInBackground |
-                              WJKVideoPlayerLayerVideoGravityResizeAspect |
-                              WJKVideoPlayerMutedPlay
-      configurationCompletion:configurationCompletion];
+                              WJKVideoPlayerLayerVideoGravityResizeAspect
+                configuration:configuration];
 }
 
 - (void)wjk_resumeMutePlayWithURL:(NSURL *)url
               bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                     progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-         configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion {
+                   configuration:(WJKPlayVideoConfiguration _Nullable)configuration {
     [self setBufferingIndicator:bufferingIndicator
                     controlView:nil
                    progressView:progressView
@@ -175,38 +174,40 @@
                        options:WJKVideoPlayerContinueInBackground |
                                WJKVideoPlayerLayerVideoGravityResizeAspect |
                                WJKVideoPlayerMutedPlay
-       configurationCompletion:configurationCompletion];
+                 configuration:configuration];
 }
 
 - (void)wjk_playVideoWithURL:(NSURL *)url
          bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                 controlView:(UIView <WJKVideoPlayerProtocol> *_Nullable)controlView
                progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-    configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion {
+              configuration:(WJKPlayVideoConfiguration _Nullable)configuration
+          needSetControlView:(BOOL)needSetControlView {
     [self setBufferingIndicator:bufferingIndicator
                     controlView:controlView
                    progressView:progressView
-             needSetControlView:YES];
+             needSetControlView:needSetControlView];
     [self wjk_stopPlay];
     [self wjk_playVideoWithURL:url
                       options:WJKVideoPlayerContinueInBackground |
                               WJKVideoPlayerLayerVideoGravityResizeAspect
-      configurationCompletion:configurationCompletion];
+                configuration:configuration];
 }
 
 - (void)wjk_resumePlayWithURL:(NSURL *)url
           bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                  controlView:(UIView <WJKVideoPlayerProtocol> *_Nullable)controlView
                 progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-     configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion {
+               configuration:(WJKPlayVideoConfiguration _Nullable)configuration
+           needSetControlView:(BOOL)needSetControlView {
     [self setBufferingIndicator:bufferingIndicator
                     controlView:controlView
                    progressView:progressView
-             needSetControlView:YES];
+             needSetControlView:needSetControlView];
     [self wjk_resumePlayWithURL:url
                        options:WJKVideoPlayerContinueInBackground |
                                WJKVideoPlayerLayerVideoGravityResizeAspect
-       configurationCompletion:configurationCompletion];
+                 configuration:configuration];
 }
 
 - (void)setBufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
@@ -261,25 +262,25 @@
 
 - (void)wjk_playVideoWithURL:(NSURL *)url
                     options:(WJKVideoPlayerOptions)options
-    configurationCompletion:(WJKPlayVideoConfigurationCompletion)configurationCompletion {
+              configuration:(WJKPlayVideoConfiguration)configuration {
     [self playVideoWithURL:url
                    options:options
-   configurationCompletion:configurationCompletion
+             configuration:configuration
                   isResume:NO];
 }
 
 - (void)wjk_resumePlayWithURL:(NSURL *)url
                      options:(WJKVideoPlayerOptions)options
-     configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion {
+               configuration:(WJKPlayVideoConfiguration _Nullable)configuration {
     [self playVideoWithURL:url
                    options:options
-   configurationCompletion:configurationCompletion
+             configuration:configuration
                   isResume:YES];
 }
 
 - (void)playVideoWithURL:(NSURL *)url
                      options:(WJKVideoPlayerOptions)options
-     configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion
+               configuration:(WJKPlayVideoConfiguration _Nullable)configuration
                 isResume:(BOOL)isResume {
     WJKMainThreadAssert;
     self.wjk_videoURL = url;
@@ -333,25 +334,25 @@
         }
 
         // nobody retain this block.
-        WJKPlayVideoConfigurationCompletion internalConfigFinishedBlock = ^(UIView *view, WJKVideoPlayerModel *model){
+        WJKPlayVideoConfiguration internalConfigFinishedBlock = ^(UIView *view, WJKVideoPlayerModel *model){
             NSParameterAssert(model);
-            if(configurationCompletion){
-                configurationCompletion(self, model);
+            if(configuration){
+                configuration(self, model);
             }
         };
         
         if(!isResume){
             [[WJKVideoPlayerManager sharedManager] playVideoWithURL:url
                                                        showOnLayer:self.helper.videoPlayerView.videoContainerLayer
-                                                           options:options
-                                           configurationCompletion:internalConfigFinishedBlock];
+                                                            options:options
+                                        configurationCompletion:internalConfigFinishedBlock];
             [self callOrientationDelegateWithInterfaceOrientation:self.wjk_viewInterfaceOrientation];
         }
         else {
             [[WJKVideoPlayerManager sharedManager] resumePlayWithURL:url
                                                         showOnLayer:self.helper.videoPlayerView.videoContainerLayer
-                                                            options:options
-                                            configurationCompletion:internalConfigFinishedBlock];
+                                                             options:options
+                                        configurationCompletion:internalConfigFinishedBlock];
         }
     }
     else {

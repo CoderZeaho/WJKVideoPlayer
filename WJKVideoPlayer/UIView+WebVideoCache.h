@@ -188,13 +188,13 @@ NS_ASSUME_NONNULL_BEGIN
  *                                 it will display default bufferingIndicator if pass nil in. @see `WJKVideoPlayerBufferingIndicator`.
  * @param progressView            The view to display the download and play progress, should compliance with the `WJKVideoPlayerProgressProtocol`,
  *                                 it will display default progressView if pass nil, @see `WJKVideoPlayerProgressView`.
- * @param configurationCompletion The block will be call when video player complete the configuration. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player complete the configuration. because initialize player is not synchronize,
  *                                 so other category method is disabled before complete the configuration.
  */
 - (void)wjk_playVideoMuteWithURL:(NSURL *)url
              bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                    progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-        configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion;
+        configuration:(WJKPlayVideoConfiguration _Nullable)configuration;
 
 /**
  * Resume play for given url with bufferingIndicator and progressView, and the player is muted.
@@ -209,13 +209,13 @@ NS_ASSUME_NONNULL_BEGIN
  *                                 it will display default bufferingIndicator if pass nil in. @see `WJKVideoPlayerBufferingIndicator`.
  * @param progressView            The view to display the download and play progress, should compliance with the `WJKVideoPlayerProgressProtocol`,
  *                                 it will display default progressView if pass nil, @see `WJKVideoPlayerProgressView`.
- * @param configurationCompletion The block will be call when video player complete the configuration. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player complete the configuration. because initialize player is not synchronize,
  *                                 so other category method is disabled before complete the configuration.
  */
 - (void)wjk_resumeMutePlayWithURL:(NSURL *)url
               bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                     progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-         configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion;
+         configuration:(WJKPlayVideoConfiguration _Nullable)configuration;
 
 /**
  * Play a local or web video for given url with bufferingIndicator, controlView, progressView, and play audio at the same time.
@@ -231,14 +231,15 @@ NS_ASSUME_NONNULL_BEGIN
  *                                 it will display default controlView if pass nil, @see `WJKVideoPlayerControlView`.
  * @param progressView            The view to display the download and play progress, should compliance with the `WJKVideoPlayerProgressProtocol`,
  *                                 it will display default progressView if pass nil, @see `WJKVideoPlayerProgressView`.
- * @param configurationCompletion The block will be call when video player complete the configuration. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player complete the configuration. because initialize player is not synchronize,
  *                                 so other category method is disabled before complete the configuration.
  */
 - (void)wjk_playVideoWithURL:(NSURL *)url
          bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
                 controlView:(UIView <WJKVideoPlayerProtocol> *_Nullable)controlView
                progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-    configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion;
+    configuration:(WJKPlayVideoConfiguration _Nullable)configuration
+          needSetControlView:(BOOL)needSetControlView;
 
 /**
  * Resume play for given url with bufferingIndicator, controlView, progressView, and play audio at the same time.
@@ -257,14 +258,15 @@ NS_ASSUME_NONNULL_BEGIN
  *                                 it will display default controlView if pass nil, @see `WJKVideoPlayerControlView`.
  * @param progressView            The view to display the download and play progress, should compliance with the `WJKVideoPlayerProgressProtocol`,
  *                                 it will display default progressView if pass nil, @see `WJKVideoPlayerProgressView`.
- * @param configurationCompletion The block will be call when video player complete the configuration. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player complete the configuration. because initialize player is not synchronize,
  *                                 so other category method is disabled before complete the configuration.
  */
 - (void)wjk_resumePlayWithURL:(NSURL *)url
-          bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
-                 controlView:(UIView <WJKVideoPlayerProtocol> *_Nullable)controlView
-                progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
-     configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion;
+           bufferingIndicator:(UIView <WJKVideoPlayerBufferingProtocol> *_Nullable)bufferingIndicator
+                  controlView:(UIView <WJKVideoPlayerProtocol> *_Nullable)controlView
+                 progressView:(UIView <WJKVideoPlayerProtocol> *_Nullable)progressView
+                configuration:(WJKPlayVideoConfiguration _Nullable)configuration
+           needSetControlView:(BOOL)needSetControlView;
 
 /**
  * Play a local or web video with given url.
@@ -273,12 +275,12 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param url                     The url for the video.
  * @param options                 The options to use when downloading the video. @see WJKVideoPlayerOptions for the possible values.
- * @param configurationCompletion The block will be call when video player complete the configuration. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player complete the configuration. because initialize player is not synchronize,
  *                                 so other category method is disabled before complete the configuration.
  */
 - (void)wjk_playVideoWithURL:(NSURL *)url
-                    options:(WJKVideoPlayerOptions)options
-    configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion;
+                     options:(WJKVideoPlayerOptions)options
+               configuration:(WJKPlayVideoConfiguration _Nullable)configuration;
 
 /**
  * Resume play with given url.
@@ -290,12 +292,12 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @param url                     The url for the video.
  * @param options                 The options to use when downloading the video. @see WJKVideoPlayerOptions for the possible values.
- * @param configurationCompletion The block will be call when video player complete the configuration. because initialize player is not synchronize,
+ * @param configuration           The block will be call when video player complete the configuration. because initialize player is not synchronize,
  *                                 so other category method is disabled before complete the configuration.
  */
 - (void)wjk_resumePlayWithURL:(NSURL *)url
-                     options:(WJKVideoPlayerOptions)options
-     configurationCompletion:(WJKPlayVideoConfigurationCompletion _Nullable)configurationCompletion;
+                      options:(WJKVideoPlayerOptions)options
+                configuration:(WJKPlayVideoConfiguration _Nullable)configuration;
 
 #pragma mark - Playback Control
 

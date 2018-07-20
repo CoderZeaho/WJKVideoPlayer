@@ -12,14 +12,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSURL (StripQuery)
+@interface NSURL (cURL)
 
-/*
- * Returns absolute string of URL with the query stripped out.
- * If there is no query, returns a copy of absolute string.
+/**
+ * Returns a `curl` command string equivalent of the current object.
+ *
+ * @return The URL to format.
  */
 
-- (NSString *)absoluteStringByStrippingQuery;
+- (NSString *)wjk_cURLCommand;
 
 @end
 
@@ -216,6 +217,19 @@ typedef NS_ENUM(NSInteger, WJKApplicationState) {
 - (void)scrollViewDidEndDecelerating;
 
 - (BOOL)viewIsVisibleInVisibleFrameAtScrollViewDidScroll:(UIView *)view;
+
+@end
+
+@interface WJKMigration : NSObject
+/**
+  * Executes a block of code for a specific version number and remembers this version as the latest migration done.
+  *
+  * @param version        A string with a specific version number.
+  * @param migrationBlock A block object to be executed when the SDK version matches the string 'version'.
+  *                       This parameter can't be nil.
+  */
++ (void)migrateToSDKVersion:(NSString *)version
+                      block:(dispatch_block_t)migrationBlock;
 
 @end
 
