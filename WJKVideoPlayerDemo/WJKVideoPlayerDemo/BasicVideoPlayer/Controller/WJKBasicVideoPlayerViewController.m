@@ -52,7 +52,8 @@ static const CGFloat kVideoPlayerHeight = 200.f;
                              bufferingIndicator:nil
                                     controlView:[self controlView]
                                    progressView:nil
-                        configurationCompletion:nil];
+                                  configuration:nil
+                             needSetControlView:YES];
     
     // 初始化默认数据
     [self _initializeDefaultData];
@@ -91,7 +92,8 @@ static const CGFloat kVideoPlayerHeight = 200.f;
                              bufferingIndicator:nil
                                     controlView:[self controlView]
                                    progressView:nil
-                        configurationCompletion:nil];
+                                  configuration:nil
+                             needSetControlView:YES];
     
     [[self tableView] reloadData];
 }
