@@ -701,7 +701,11 @@ static BOOL _isOpenAwakeWhenBuffering = NO;
     model.player = [AVPlayer playerWithPlayerItem:playerItem];
     [model.player addObserver:self forKeyPath:@"rate" options:NSKeyValueObservingOptionNew context:nil];
     if ([model.player respondsToSelector:@selector(automaticallyWaitsToMinimizeStalling)]) {
-        model.player.automaticallyWaitsToMinimizeStalling = NO;
+        if (@available(iOS 10.0, *)) {
+            model.player.automaticallyWaitsToMinimizeStalling = NO;
+        } else {
+            // Fallback on earlier versions
+        }
     }
     model.playerLayer = [AVPlayerLayer playerLayerWithPlayer:model.player];
     [self setVideoGravityWithOptions:options playerModel:model];

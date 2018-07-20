@@ -119,7 +119,7 @@ playFailedWithError:(NSError *)error;
  * @param url                     The video url to play.
  * @param fullVideoCachePath      The full video file path in disk.
  * @param showLayer               The layer to show the video display layer.
- * @param configuration           The block will be call when video player config finished. because initialize player is not synchronize,
+ * @param configurationCompletion The block will be call when video player config finished. because initialize player is not synchronize,
  *                                 so other category method is disabled before config finished.
  *
  * @return token (@see WJKPlayVideoManagerModel) that can be passed to -stopPlayVideo: to stop play.

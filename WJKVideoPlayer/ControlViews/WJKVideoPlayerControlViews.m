@@ -261,6 +261,10 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     
     [self removeCacheProgressViewIfNeed];
     
+    if (self.totalSeconds == 1) {
+        return;
+    }
+    
     CMTimeRange range = [self.rangesValue.firstObject CMTimeRangeValue];
     
     NSTimeInterval cacheSeconds = CMTimeGetSeconds(range.start) + CMTimeGetSeconds(range.duration);
@@ -816,7 +820,7 @@ static const CGFloat kWJKVideoPlayerFastForwardWidth = 125;
     
     self.seekTime += value / 200;
     
-    CGFloat totalTime           = self.totalSeconds;
+    CGFloat totalTime = self.totalSeconds;
     if (self.seekTime > totalTime) { self.seekTime = totalTime;}
     if (self.seekTime < 0) { self.seekTime = 0; }
     
@@ -1238,7 +1242,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 - (void)viewWillPrepareToReuse {
     [self cacheRangeDidChange:@[] videoURL:[NSURL new]];
     [self playProgressDidChangeElapsedSeconds:0
-                                 totalSeconds:1
+                                 totalSeconds:0
                                      videoURL:[NSURL new]];
 }
 
