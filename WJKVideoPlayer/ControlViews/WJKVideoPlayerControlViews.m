@@ -16,11 +16,13 @@
 
 @property (nonatomic, strong) NSArray<NSValue *> *rangesValue;
 
-@property(nonatomic, assign) NSUInteger fileLength;
+@property (nonatomic, assign) NSUInteger fileLength;
 
-@property(nonatomic, assign) NSTimeInterval totalSeconds;
+@property (nonatomic, assign) NSTimeInterval cachedProgress;
 
-@property(nonatomic, assign) NSTimeInterval elapsedSeconds;
+@property (nonatomic, assign) NSTimeInterval totalSeconds;
+
+@property (nonatomic, assign) NSTimeInterval elapsedSeconds;
 
 @property (nonatomic, strong) UISlider *dragSlider;
 
@@ -44,7 +46,7 @@ NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotification = @"com.wj
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self _setup];
+        [self setup];
     }
     return self;
 }
@@ -60,7 +62,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
             (referenceSize.height - kWJKVideoPlayerCachedProgressViewHeight) * 0.5,
             referenceSize.width - 2 * kWJKVideoPlayerDragSliderLeftEdge, kWJKVideoPlayerCachedProgressViewHeight);
     self.dragSlider.frame = constrainedRect;
-    [self updateCacheProgressViewIfNeed];
+    [self displayCacheProgressViewIfNeedWhenAutomaticCachingSupported];
     [self playProgressDidChangeElapsedSeconds:self.elapsedSeconds
                                  totalSeconds:self.totalSeconds
                                      videoURL:[NSURL new]];
@@ -76,14 +78,19 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 - (void)viewWillPrepareToReuse {
     [self cacheRangeDidChange:@[] videoURL:[NSURL new]];
     [self playProgressDidChangeElapsedSeconds:0
-                                 totalSeconds:1
+                                 totalSeconds:0
                                      videoURL:[NSURL new]];
 }
 
 - (void)cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges
                    videoURL:(NSURL *)videoURL {
     _rangesValue = cacheRanges;
-    [self updateCacheProgressViewIfNeed];
+    [self displayCacheProgressViewIfNeedWhenAutomaticCachingSupported];
+}
+
+- (void)loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress videoURL:(NSURL *)videoURL {
+    _cachedProgress = loadedTimeProgress;
+    [self displayCacheProgressViewIfNeedWhenAutomaticCachingNotSupported];
 }
 
 - (void)playProgressDidChangeElapsedSeconds:(NSTimeInterval)elapsedSeconds
@@ -135,7 +142,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 
 #pragma mark - Private
 
-- (void)_setup {
+- (void)setup {
     self.trackProgressView = ({
         UIProgressView *view = [UIProgressView new];
         view.trackTintColor = [UIColor colorWithWhite:1 alpha:0.15];
@@ -189,16 +196,9 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     if(!self.totalSeconds){
         return;
     }
-    [self updateCacheProgressViewIfNeed];
+    [self displayCacheProgressViewIfNeedWhenAutomaticCachingSupported];
     [self.playerView wjk_seekToTime:CMTimeMakeWithSeconds([self fetchElapsedTimeInterval], 1000)];
     [self.playerView wjk_resume];
-}
-
-- (void)updateCacheProgressViewIfNeed {
-    //Zaihu : 不支持边播边缓存时调用
-    [self displayCacheProgressViewIfNeedWhenAutomaticCachingNotSupported];
-    //Zaihu : 支持边播边缓存时调用
-//    [self displayCacheProgressViewIfNeed];
 }
 
 - (void)removeCacheProgressViewIfNeed {
@@ -207,7 +207,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     }
 }
 
-- (void)displayCacheProgressViewIfNeed {
+- (void)displayCacheProgressViewIfNeedWhenAutomaticCachingSupported {
     if(self.userDragging || !self.rangesValue.count){
         return;
     }
@@ -255,27 +255,17 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 }
 
 - (void)displayCacheProgressViewIfNeedWhenAutomaticCachingNotSupported {
-    if(self.userDragging || !self.rangesValue.count){
+    if(self.userDragging){
         return;
     }
     
     [self removeCacheProgressViewIfNeed];
     
-    if (self.totalSeconds == 1) {
-        return;
+    if(isnan(_cachedProgress)) {
+        _cachedProgress = 0;
     }
     
-    CMTimeRange range = [self.rangesValue.firstObject CMTimeRangeValue];
-    
-    NSTimeInterval cacheSeconds = CMTimeGetSeconds(range.start) + CMTimeGetSeconds(range.duration);
-    
-    CGFloat cacheProgress = cacheSeconds / self.totalSeconds;
-    
-    if(isnan(cacheProgress) || cacheProgress > 1) {
-        cacheProgress = 0;
-    }
-    
-    CGFloat cacheProgressViewWidth =  self.trackProgressView.bounds.size.width * cacheProgress;
+    CGFloat cacheProgressViewWidth =  self.trackProgressView.bounds.size.width * _cachedProgress;
     self.cachedProgressView.frame = CGRectMake(0, 0, cacheProgressViewWidth, self.trackProgressView.bounds.size.height);
     [self.trackProgressView addSubview:self.cachedProgressView];
 }
@@ -290,7 +280,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 
 @end
 
-@interface WJKVideoPlayerFastForwardView ()<WJKVideoPlayerProtocol>
+@interface WJKVideoPlayerFastForwardView ()
 
 @property (nonatomic, strong) UIImageView *fastForwardImageView;
 
@@ -308,10 +298,11 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self _setup];
+        [self setup];
     }
     return self;
 }
+
 
 #pragma mark - WJKVideoPlayerLayoutProtocol
 
@@ -323,7 +314,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     self.fastForwardProgressView.frame = CGRectMake(12, self.fastForwardTimeLabel.frame.origin.y + self.fastForwardTimeLabel.frame.size.height + 8, referenceSize.width - 24, 5);
 }
 
-- (void)_setup {
+- (void)setup {
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     self.layer.cornerRadius = 4;
     self.layer.masksToBounds = YES;
@@ -422,7 +413,7 @@ static const CGFloat kWJKVideoPlayerControlBarTimeLabelWidth = 32;
     self = [super initWithFrame:CGRectZero];
     if (self) {
         _progressView = progressView;
-        [self _setup];
+        [self setup];
     }
     return self;
 }
@@ -489,6 +480,11 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
                                   videoURL:videoURL];
 }
 
+- (void)loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress videoURL:(NSURL *)videoURL {
+    [self.progressView loadedTimeProgressDidChange:loadedTimeProgress
+                                          videoURL:videoURL];
+}
+
 - (void)playProgressDidChangeElapsedSeconds:(NSTimeInterval)elapsedSeconds
                                totalSeconds:(NSTimeInterval)totalSeconds
                                    videoURL:(NSURL *)videoURL {
@@ -546,12 +542,14 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 
 - (void)playButtonDidClick:(UIButton *)button {
     button.selected = !button.selected;
+    if ([[self delegate] respondsToSelector:@selector(controlBarPlayButton:)]) {
+        [[self delegate] controlBarPlayButton:button];
+    }
     BOOL isPlay = self.playerView.wjk_playerStatus == WJKVideoPlayerStatusBuffering ||
             self.playerView.wjk_playerStatus == WJKVideoPlayerStatusPlaying;
     isPlay ? [self.playerView wjk_pause] : [self.playerView wjk_resume];
 }
 
-//Zaihu 全屏按钮导致全屏会调用这里
 - (void)landscapeButtonDidClick:(UIButton *)button {
     button.selected = !button.selected;
     if ([[self delegate] respondsToSelector:@selector(controlBarLandspaceButton:)]) {
@@ -564,7 +562,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     }
 }
 
-- (void)_setup {
+- (void)setup {
     self.backgroundColor = [UIColor clearColor];
 
     self.playButton = ({
@@ -635,7 +633,6 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 
 @property (nonatomic, strong) UIImageView *blurImageView;
 
-//Zaihu
 @property (nonatomic, strong) UIView *userInteractionView;
 
 @property (nonatomic, strong) UIView *brightnessView;
@@ -701,9 +698,9 @@ static const CGFloat kWJKVideoPlayerFastForwardWidth = 125;
         _needAutoHideControlView = needAutoHideControlView;
         _controlBar = controlBar;
         _blurImage = blurImage;
-        [self _setup];
-        [self _addNotifications];
-        [self _configureVolume];
+        [self setup];
+        [self addNotifications];
+        [self configureVolume];
     }
     return self;
 }
@@ -834,6 +831,7 @@ static const CGFloat kWJKVideoPlayerFastForwardWidth = 125;
     [[self fastForwardView] draggedTime:self.seekTime totalTime:totalTime isFastForward:style];
 }
 
+
 #pragma mark - WJKVideoPlayerLayoutProtocol
 
 - (void)layoutThatFits:(CGRect)constrainedRect
@@ -871,6 +869,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     }
 }
 
+
 #pragma mark - WJKVideoPlayerProtocol
 
 - (void)viewWillAddToSuperView:(UIView *)view {
@@ -886,6 +885,11 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
                    videoURL:(NSURL *)videoURL {
     [self.controlBar cacheRangeDidChange:cacheRanges
                                 videoURL:videoURL];
+}
+
+- (void)loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress videoURL:(NSURL *)videoURL {
+    [self.controlBar loadedTimeProgressDidChange:loadedTimeProgress
+                                        videoURL:videoURL];
 }
 
 - (void)playProgressDidChangeElapsedSeconds:(NSTimeInterval)elapsedSeconds
@@ -922,11 +926,11 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
                                                      videoURL:videoURL];
 }
 
+
 #pragma mark - Private
 
-- (void)_setup {
+- (void)setup {
     
-    //Zaihu
     self.userInteractionView = ({
         UIView *view = [UIView new];
         view.backgroundColor = [UIColor clearColor];
@@ -992,8 +996,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     [self addGestureRecognizer:self.panGestureRecognizer];
 }
 
-//Zaihu 添加观察者、通知
-- (void)_addNotifications {
+- (void)addNotifications {
     
     [NSNotificationCenter.defaultCenter addObserver:self
                                            selector:@selector(didReceiveUserStartDragNotification)
@@ -1013,7 +1016,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     
 }
 
-- (void)_configureVolume {
+- (void)configureVolume {
     MPVolumeView *volumeView = [[MPVolumeView alloc] init];
     _volumeViewSlider = nil;
     for (UIView *view in [volumeView subviews]){
@@ -1045,7 +1048,6 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     }
 }
 
-//Zaihu 重力感应导致全屏会调用这里
 - (void)onDeviceOrientationChange {
     if (self.cancleGravitySensing == YES) {
         return;
@@ -1117,6 +1119,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     [self endTimer];
 }
 
+
 #pragma mark - accessor
 
 - (void)setCancleTapGesture:(BOOL)cancleTapGesture {
@@ -1185,7 +1188,7 @@ const CGFloat WJKVideoPlayerProgressViewElementHeight = 2;
 - (instancetype)init {
     self = [super init];
     if(self){
-        [self _setup];
+        [self setup];
     }
     return self;
 }
@@ -1193,7 +1196,7 @@ const CGFloat WJKVideoPlayerProgressViewElementHeight = 2;
 
 #pragma mark - Setup
 
-- (void)_setup {
+- (void)setup {
     self.trackProgressView = ({
         UIProgressView *view = [UIProgressView new];
         view.trackTintColor = [UIColor colorWithWhite:1 alpha:0.15];
@@ -1234,6 +1237,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     self.elapsedProgressView.frame = self.trackProgressView.frame;
 }
 
+
 #pragma mark - WJKVideoPlayerProtocol
 
 - (void)viewWillAddToSuperView:(UIView *)view {
@@ -1249,10 +1253,12 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 - (void)cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges
                    videoURL:(NSURL *)videoURL {
     _rangesValue = cacheRanges;
-    //Zaihu : 不支持边播边缓存时调用
+    [self displayCacheProgressViewIfNeedWhenAutomaticCachingSupported];
+}
+
+- (void)loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress videoURL:(NSURL *)videoURL {
+    
     [self displayCacheProgressViewIfNeedWhenAutomaticCachingNotSupported];
-    //Zaihu : 支持边播边缓存时调用
-//    [self displayCacheProgressViewIfNeed];
 }
 
 - (void)playProgressDidChangeElapsedSeconds:(NSTimeInterval)elapsedSeconds
@@ -1277,7 +1283,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     self.fileLength = videoLength;
 }
 
-- (void)displayCacheProgressViewIfNeed {
+- (void)displayCacheProgressViewIfNeedWhenAutomaticCachingSupported {
     if(!self.rangesValue.count){
         return;
     }
@@ -1325,23 +1331,14 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 }
 
 - (void)displayCacheProgressViewIfNeedWhenAutomaticCachingNotSupported {
-    if(!self.rangesValue.count){
-        return;
-    }
     
     [self removeCacheProgressViewIfNeed];
     
-    CMTimeRange range = [self.rangesValue.firstObject CMTimeRangeValue];
-    
-    NSTimeInterval cacheSeconds = CMTimeGetSeconds(range.start) + CMTimeGetSeconds(range.duration);
-    
-    CGFloat cacheProgress = cacheSeconds / self.totalSeconds;
-    
-    if(isnan(cacheProgress) || cacheProgress > 1) {
-        cacheProgress = 0;
+    if(isnan(_cachedProgress)) {
+        _cachedProgress = 0;
     }
     
-    CGFloat cacheProgressViewWidth =  self.trackProgressView.bounds.size.width * cacheProgress;
+    CGFloat cacheProgressViewWidth =  self.trackProgressView.bounds.size.width * _cachedProgress;
     self.cachedProgressView.frame = CGRectMake(0, 0, cacheProgressViewWidth, self.trackProgressView.bounds.size.height);
     [self.trackProgressView addSubview:self.cachedProgressView];
 }
@@ -1376,7 +1373,7 @@ CGFloat const WJKVideoPlayerBufferingIndicatorWidthHeight = 46;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self _setup];
+        [self setup];
     }
     return self;
 }
@@ -1427,7 +1424,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 
 #pragma mark - Private
 
-- (void)_setup{
+- (void)setup{
     self.backgroundColor = [UIColor clearColor];
 
     self.blurBackgroundView = ({
@@ -1484,7 +1481,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 - (instancetype)init {
     self = [super init];
     if(self){
-        [self _setup];
+        [self setup];
     }
     return self;
 }
@@ -1627,9 +1624,10 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     return [self findNearestViewControllerForView:view.superview];
 }
 
+
 #pragma mark - Setup
 
-- (void)_setup {
+- (void)setup {
     self.placeholderView = ({
         UIView *view = [UIView new];
         view.backgroundColor = [UIColor clearColor];

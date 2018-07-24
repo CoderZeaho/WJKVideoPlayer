@@ -11,10 +11,10 @@
 
 @interface WJKVideoPlayerBrightnessView ()
 
-@property (nonatomic, strong) UIImageView		*backImage;
-@property (nonatomic, strong) UILabel			*title;
-@property (nonatomic, strong) UIView			*longView;
-@property (nonatomic, strong) NSMutableArray	*tipArray;
+@property (nonatomic, strong) UIImageView *backImage;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UIView *longView;
+@property (nonatomic, strong) NSMutableArray *tipArray;
 @property (nonatomic, assign) BOOL				orientationDidChange;
 
 @end
@@ -37,24 +37,23 @@
 		
         self.layer.cornerRadius  = 10;
         self.layer.masksToBounds = YES;
-        
-        // 使用UIToolbar实现毛玻璃效果，简单粗暴，支持iOS7+
+
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.bounds];
         toolbar.alpha = 0.97;
         [self addSubview:toolbar];
         
         self.backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 79, 76)];
-        self.backImage.image        = [UIImage imageNamed:@"WJKVideoPlayer.bundle/wjk_videoplayer_brightness"];
+        self.backImage.image = [UIImage imageNamed:@"WJKVideoPlayer.bundle/wjk_videoplayer_brightness"];
         [self addSubview:self.backImage];
 		
-        self.title      = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.bounds.size.width, 30)];
-        self.title.font          = [UIFont boldSystemFontOfSize:16];
-        self.title.textColor     = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
+        self.title = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.bounds.size.width, 30)];
+        self.title.font = [UIFont boldSystemFontOfSize:16];
+        self.title.textColor = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
         self.title.textAlignment = NSTextAlignmentCenter;
-        self.title.text          = @"亮度";
+        self.title.text = @"亮度";
         [self addSubview:self.title];
 		
-        self.longView         = [[UIView alloc]initWithFrame:CGRectMake(13, 132, self.bounds.size.width - 26, 7)];
+        self.longView = [[UIView alloc]initWithFrame:CGRectMake(13, 132, self.bounds.size.width - 26, 7)];
         self.longView.backgroundColor = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
         [self addSubview:self.longView];
 		
@@ -67,7 +66,6 @@
 	return self;
 }
 
-// 创建 Tips
 - (void)createTips {
 	
 	self.tipArray = [NSMutableArray arrayWithCapacity:16];
@@ -77,10 +75,10 @@
 	CGFloat tipY = 1;
 	
 	for (int i = 0; i < 16; i++) {
-        CGFloat tipX          = i * (tipW + 1) + 1;
-        UIImageView *image    = [[UIImageView alloc] init];
+        CGFloat tipX = i * (tipW + 1) + 1;
+        UIImageView *image = [[UIImageView alloc] init];
         image.backgroundColor = [UIColor whiteColor];
-        image.frame           = CGRectMake(tipX, tipY, tipW, tipH);
+        image.frame = CGRectMake(tipX, tipY, tipW, tipH);
 		[self.longView addSubview:image];
 		[self.tipArray addObject:image];
 	}

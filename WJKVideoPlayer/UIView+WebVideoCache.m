@@ -444,7 +444,6 @@
     CGRect videoPlayerViewFrameInWindow = [self convertRect:videoPlayerView.frame toView:nil];
     [videoPlayerView removeFromSuperview];
     
-    //Zaihu 添加背景
     UIImageView *backgroundImageView =  self.helper.backgroundImageView;
     [[UIApplication sharedApplication].keyWindow addSubview:backgroundImageView];
     backgroundImageView.frame = videoPlayerViewFrameInWindow;
@@ -540,7 +539,6 @@
     [self callOrientationDelegateWithInterfaceOrientation:WJKVideoPlayViewInterfaceOrientationPortrait];
 }
 
-//Zaihu 添加缩放方法
 - (void)wjk_gotoScale {
     [self wjk_gotoScaleAnimated:YES
                          completion:nil];
@@ -751,12 +749,12 @@
     }
 }
 
-- (void)videoPlayerManager:(WJKVideoPlayerManager *)videoPlayerManager cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges {
-    if(self.helper.controlView && [self.helper.controlView respondsToSelector:@selector(cacheRangeDidChange:videoURL:)]){
-        [self.helper.controlView cacheRangeDidChange:cacheRanges videoURL:self.wjk_videoURL];
+- (void)videoPlayerManager:(WJKVideoPlayerManager *)videoPlayerManager loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress {
+    if(self.helper.controlView && [self.helper.controlView respondsToSelector:@selector(loadedTimeProgressDidChange:videoURL:)]){
+        [self.helper.controlView loadedTimeProgressDidChange:loadedTimeProgress videoURL:self.wjk_videoURL];
     }
-    if(self.helper.progressView && [self.helper.progressView respondsToSelector:@selector(cacheRangeDidChange:videoURL:)]){
-        [self.helper.progressView cacheRangeDidChange:cacheRanges videoURL:self.wjk_videoURL];
+    if(self.helper.progressView && [self.helper.progressView respondsToSelector:@selector(loadedTimeProgressDidChange:videoURL:)]){
+        [self.helper.progressView loadedTimeProgressDidChange:loadedTimeProgress videoURL:self.wjk_videoURL];
     }
 }
 

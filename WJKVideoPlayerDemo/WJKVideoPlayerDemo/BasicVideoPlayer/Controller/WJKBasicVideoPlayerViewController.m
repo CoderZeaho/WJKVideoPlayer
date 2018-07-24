@@ -48,12 +48,6 @@ static const CGFloat kVideoPlayerHeight = 200.f;
     self.videoContainer.wjk_videoPlayerDelegate = self;
     self.videoContainer.backgroundColor = [UIColor blackColor];
     [[self view] addSubview:[self videoContainer]];
-    [[self videoContainer] wjk_playVideoWithURL:[NSURL URLWithString:@"xpher.me"]
-                             bufferingIndicator:nil
-                                    controlView:[self controlView]
-                                   progressView:nil
-                                  configuration:nil
-                             needSetControlView:YES];
     
     // 初始化默认数据
     [self _initializeDefaultData];
@@ -87,8 +81,12 @@ static const CGFloat kVideoPlayerHeight = 200.f;
                             @{@"title":@"空空如也",@"description":@"",@"action":^{}}
                             ],
                         ];
+    // local video
+//    NSURL *url = [NSURL fileURLWithPath:@"/Users/apple/Desktop/WJKPlayer/WJKPlayerDemo/WJKPlayerDemo/BasicVideoPlayer/Skr.mp4"];
+    // web video
+    NSURL *url = [NSURL URLWithString:@"http://aliyunvideo.wujike.com.cn/2e4a16536b514694b5fa6f3171abb2d6/f6c42b9d33a24d51948dbbb1c225bec4-b0f1e12fbe770573528d470ab256055d-sd.mp4"];
     
-    [[self videoContainer] wjk_playVideoWithURL:[NSURL URLWithString:@"http://aliyunvideo.wujike.com.cn/2e4a16536b514694b5fa6f3171abb2d6/f6c42b9d33a24d51948dbbb1c225bec4-b0f1e12fbe770573528d470ab256055d-sd.mp4"]
+    [[self videoContainer] wjk_playVideoWithURL:url
                              bufferingIndicator:nil
                                     controlView:[self controlView]
                                    progressView:nil

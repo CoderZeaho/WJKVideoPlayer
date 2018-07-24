@@ -386,8 +386,8 @@ playFailedWithError:(NSError *)error {
                                              error:error];
 }
 
-- (void)videoPlayer:(WJKVideoPlayer *)videoPlayer cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges {
-    [self callPlayDelegateMethodWithCacheRanges:cacheRanges];
+- (void)videoPlayer:(WJKVideoPlayer *)videoPlayer loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress {
+    [self callPlayDelegateMethodWithLoadedTimeProgress:loadedTimeProgress];
 }
 
 #pragma mark - WJKVideoPlayerDownloaderDelegate
@@ -569,14 +569,6 @@ shouldResumePlaybackWhenApplicationDidBecomeActiveFromResignActiveForURL:self.ma
     });
 }
 
-- (void)callPlayDelegateMethodWithCacheRanges:(NSArray <NSValue *> *)cacheRanges {
-    WJKDispatchSyncOnMainQueue(^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerManager:cacheRangeDidChange:)]) {
-            [self.delegate videoPlayerManager:self cacheRangeDidChange:cacheRanges];
-        }
-    });
-}
-
 - (void)callDownloadDelegateMethodWithFragmentRanges:(NSArray<NSValue *> *)fragmentRanges
                                         expectedSize:(NSUInteger)expectedSize
                                            cacheType:(WJKVideoPlayerCacheType)cacheType
@@ -588,6 +580,14 @@ shouldResumePlaybackWhenApplicationDidBecomeActiveFromResignActiveForURL:self.ma
                                                         fragmentRanges:fragmentRanges
                                                           expectedSize:expectedSize
                                                                  error:error];
+        }
+    });
+}
+
+- (void)callPlayDelegateMethodWithLoadedTimeProgress:(CGFloat)loadedTimeProgress {
+    WJKDispatchSyncOnMainQueue(^{
+        if (self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerManager:loadedTimeProgressDidChange:)]) {
+            [self.delegate videoPlayerManager:self loadedTimeProgressDidChange:loadedTimeProgress];
         }
     });
 }

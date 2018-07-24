@@ -21,6 +21,8 @@ UIKIT_EXTERN NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotificati
 
 @property (nonatomic, assign, readonly) NSUInteger fileLength;
 
+@property (nonatomic, assign, readonly) NSTimeInterval cachedProgress;
+
 @property (nonatomic, assign, readonly) NSTimeInterval totalSeconds;
 
 @property (nonatomic, assign, readonly) NSTimeInterval elapsedSeconds;
@@ -35,7 +37,7 @@ UIKIT_EXTERN NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotificati
 
 @end
 
-@interface WJKVideoPlayerFastForwardView : UIView<WJKVideoPlayerProtocol>
+@interface WJKVideoPlayerFastForwardView : UIView
 
 @property (nonatomic, strong, readonly) UIImageView *fastForwardImageView;
 
@@ -57,6 +59,7 @@ UIKIT_EXTERN NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotificati
 @protocol WJKVideoPlayerControlBarDelegate <NSObject>
 @optional
 
+- (void)controlBarPlayButton:(UIButton *)button;
 - (void)controlBarLandspaceButton:(UIButton *)button;
 
 @end
@@ -89,7 +92,6 @@ UIKIT_EXTERN NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotificati
 
 @property (nonatomic, strong, readonly) UIImage *blurImage;
 
-//Zaihu
 @property (nonatomic, strong, readonly) UIView *userInteractionView;
 
 @property (nonatomic, strong, readonly) UIView *brightnessView;
@@ -120,7 +122,6 @@ UIKIT_EXTERN NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotificati
                          blurImage:(UIImage *_Nullable)blurImage
            needAutoHideControlView:(BOOL)needAutoHideControlView NS_DESIGNATED_INITIALIZER;
 
-//Zaihu
 /**
  Real-time observe playback time.
 
@@ -155,6 +156,8 @@ UIKIT_EXTERN const CGFloat WJKVideoPlayerProgressViewElementHeight;
 @property (nonatomic, strong, readonly) NSArray<NSValue *> *rangesValue;
 
 @property (nonatomic, assign, readonly) NSUInteger fileLength;
+
+@property (nonatomic, assign, readonly) NSTimeInterval cachedProgress;
 
 @property (nonatomic, assign, readonly) NSTimeInterval totalSeconds;
 

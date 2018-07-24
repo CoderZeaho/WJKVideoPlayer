@@ -6,10 +6,10 @@
 //  Copyright © 2018年 Zeaho. All rights reserved.
 //
 
-#import "UIView+WebVideoCache.h"
+#import "WJKVideoPlayerManager.h"
 #import "WJKVideoPlayerControlViews.h"
+#import "WJKVideoPlayerCache.h"
+#import "UIView+WebVideoCache.h"
 #import "UITableView+WebVideoCache.h"
 #import "UITableViewCell+WebVideoCache.h"
-#import "WJKVideoPlayerCache.h"
-#import "WJKVideoPlayerManager.h"
 #import "UIViewController+PlayerRotation.h"

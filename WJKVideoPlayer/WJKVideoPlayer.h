@@ -72,12 +72,12 @@ playFailedWithError:(NSError *)error;
 
 
 /**
- Update cache range when automatic caching is not supported
-
+ Update video loaded time range when video playback.
+ 
  @param videoPlayer videoPlayer.
- @param cacheRanges cacheRanges.
+ @param loadedTimeProgress loadedTimeProgress.
  */
-- (void)videoPlayer:(nonnull WJKVideoPlayer *)videoPlayer cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges;
+- (void)videoPlayer:(nonnull WJKVideoPlayer *)videoPlayer loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress;
 
 @end
 

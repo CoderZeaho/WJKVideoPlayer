@@ -383,7 +383,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)wjk_gotoPortraitAnimated:(BOOL)flag
                      completion:(dispatch_block_t _Nullable)completion;
 
-//Zaihu 添加缩放方法
 /**
  * Call this method to excute scale screen.
  */

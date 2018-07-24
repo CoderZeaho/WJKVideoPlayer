@@ -537,8 +537,16 @@ didReceiveLoadingRequestTask:(WJKResourceLoadingRequestWebTask *)requestTask {
     }
     else if ([keyPath isEqualToString:@"loadedTimeRanges"]) {
         AVPlayerItem *playerItem = (AVPlayerItem *)object;
-        NSArray *cacheRanges = playerItem.loadedTimeRanges;
-        [self callDelegateMethodWithCacheRanges:cacheRanges];
+        
+        NSArray *loadedTimeRanges = playerItem.loadedTimeRanges;
+        
+        CMTimeRange rangeValue = [loadedTimeRanges.firstObject CMTimeRangeValue];
+        
+        NSTimeInterval loadedTimeInterval = CMTimeGetSeconds(rangeValue.start) + CMTimeGetSeconds(rangeValue.duration);
+        
+        CGFloat totalDuration = CMTimeGetSeconds(playerItem.duration);
+        
+        [self callDelegateMethodWithLoadedTimeProgress:loadedTimeInterval / totalDuration];
     }
 }
 
@@ -695,7 +703,7 @@ static BOOL _isOpenAwakeWhenBuffering = NO;
     model.playerItem = playerItem;
     [playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
-    //Zaihu : 添加缓存监听(可能在支持自动缓存状态下有问题,修改了库)
+    // 添加缓存监听(可能在支持自动缓存状态下有问题,修改了库)
     [playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
 
     model.player = [AVPlayer playerWithPlayerItem:playerItem];
@@ -782,11 +790,11 @@ static BOOL _isOpenAwakeWhenBuffering = NO;
     });
 }
 
-- (void)callDelegateMethodWithCacheRanges:(NSArray<NSValue *> *)cacheRanges {
-    WJKDebugLog(@"Player cache video ranges: %@", cacheRanges);
+- (void)callDelegateMethodWithLoadedTimeProgress:(CGFloat)loadedTimeProgress {
+    WJKDebugLog(@"Player loaded video time progress: %.2f", loadedTimeProgress);
     WJKDispatchSyncOnMainQueue(^{
-        if (self.delegate && [self.delegate respondsToSelector:@selector(videoPlayer:cacheRangeDidChange:)]) {
-            [self.delegate videoPlayer:self cacheRangeDidChange:cacheRanges];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(videoPlayer:loadedTimeProgressDidChange:)]) {
+            [self.delegate videoPlayer:self loadedTimeProgressDidChange:loadedTimeProgress];
         }
     });
 }

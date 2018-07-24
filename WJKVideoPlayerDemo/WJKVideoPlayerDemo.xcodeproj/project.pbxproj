@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA3C38DC20D63C3900721F59 /* WJKOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3C38DB20D63C3900721F59 /* WJKOtherViewController.m */; };
+		FA8C49C021072A26008900E8 /* WJKVideoPlayerBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C49BF21072A26008900E8 /* WJKVideoPlayerBrightnessView.m */; };
 		FAE4033E20C7913C00018A02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4033D20C7913C00018A02 /* AppDelegate.m */; };
 		FAE4034120C7913C00018A02 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4034020C7913C00018A02 /* ViewController.m */; };
 		FAE4034420C7913C00018A02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE4034220C7913C00018A02 /* Main.storyboard */; };
@@ -22,7 +23,6 @@
 		FAE4039D20C7918B00018A02 /* WJKVideoPlayerCacheFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038320C7918B00018A02 /* WJKVideoPlayerCacheFile.m */; };
 		FAE4039E20C7918B00018A02 /* WJKVideoPlayerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038420C7918B00018A02 /* WJKVideoPlayerDownloader.m */; };
 		FAE4039F20C7918B00018A02 /* WJKResourceLoadingRequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038520C7918B00018A02 /* WJKResourceLoadingRequestTask.m */; };
-		FAE403A020C7918B00018A02 /* WJKVideoPlayerBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038920C7918B00018A02 /* WJKVideoPlayerBrightnessView.m */; };
 		FAE403A320C7918B00018A02 /* WJKVideoPlayerControlViews.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4038F20C7918B00018A02 /* WJKVideoPlayerControlViews.m */; };
 		FAE403A420C7918B00018A02 /* WJKVideoPlayerCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039020C7918B00018A02 /* WJKVideoPlayerCache.m */; };
 		FAE403A520C7918B00018A02 /* WJKVideoPlayerResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4039120C7918B00018A02 /* WJKVideoPlayerResourceLoader.m */; };
@@ -60,6 +60,8 @@
 		E3E65D515305012E2BEB6D12 /* Pods-WJKVideoPlayerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJKVideoPlayerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WJKVideoPlayerDemo/Pods-WJKVideoPlayerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		FA3C38DA20D63C3900721F59 /* WJKOtherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJKOtherViewController.h; sourceTree = "<group>"; };
 		FA3C38DB20D63C3900721F59 /* WJKOtherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJKOtherViewController.m; sourceTree = "<group>"; };
+		FA8C49BE21072A26008900E8 /* WJKVideoPlayerBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerBrightnessView.h; sourceTree = "<group>"; };
+		FA8C49BF21072A26008900E8 /* WJKVideoPlayerBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerBrightnessView.m; sourceTree = "<group>"; };
 		FAE4033920C7913C00018A02 /* WJKVideoPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WJKVideoPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE4033C20C7913C00018A02 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAE4033D20C7913C00018A02 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -95,9 +97,7 @@
 		FAE4038420C7918B00018A02 /* WJKVideoPlayerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerDownloader.m; sourceTree = "<group>"; };
 		FAE4038520C7918B00018A02 /* WJKResourceLoadingRequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKResourceLoadingRequestTask.m; sourceTree = "<group>"; };
 		FAE4038620C7918B00018A02 /* UIView+WebVideoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebVideoCache.h"; sourceTree = "<group>"; };
-		FAE4038920C7918B00018A02 /* WJKVideoPlayerBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerBrightnessView.m; sourceTree = "<group>"; };
 		FAE4038B20C7918B00018A02 /* WJKVideoPlayerControlViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerControlViews.h; sourceTree = "<group>"; };
-		FAE4038C20C7918B00018A02 /* WJKVideoPlayerBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJKVideoPlayerBrightnessView.h; sourceTree = "<group>"; };
 		FAE4038F20C7918B00018A02 /* WJKVideoPlayerControlViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerControlViews.m; sourceTree = "<group>"; };
 		FAE4039020C7918B00018A02 /* WJKVideoPlayerCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerCache.m; sourceTree = "<group>"; };
 		FAE4039120C7918B00018A02 /* WJKVideoPlayerResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJKVideoPlayerResourceLoader.m; sourceTree = "<group>"; };
@@ -214,8 +214,8 @@
 				FAE4037C20C7918B00018A02 /* WJKVideoPlayerCompat.m */,
 				FAE4037520C7918B00018A02 /* WJKVideoPlayerSupportUtils.h */,
 				FAE4038020C7918B00018A02 /* WJKVideoPlayerSupportUtils.m */,
-				FAE4037720C7918B00018A02 /* UIView+WebVideoCache.m */,
 				FAE4038620C7918B00018A02 /* UIView+WebVideoCache.h */,
+				FAE4037720C7918B00018A02 /* UIView+WebVideoCache.m */,
 				FAE4037320C7918B00018A02 /* UITableView+WebVideoCache.h */,
 				FAE4038220C7918B00018A02 /* UITableView+WebVideoCache.m */,
 				FAE4037E20C7918B00018A02 /* UITableViewCell+WebVideoCache.h */,
@@ -245,8 +245,8 @@
 			children = (
 				FAE4038B20C7918B00018A02 /* WJKVideoPlayerControlViews.h */,
 				FAE4038F20C7918B00018A02 /* WJKVideoPlayerControlViews.m */,
-				FAE4038C20C7918B00018A02 /* WJKVideoPlayerBrightnessView.h */,
-				FAE4038920C7918B00018A02 /* WJKVideoPlayerBrightnessView.m */,
+				FA8C49BE21072A26008900E8 /* WJKVideoPlayerBrightnessView.h */,
+				FA8C49BF21072A26008900E8 /* WJKVideoPlayerBrightnessView.m */,
 			);
 			path = ControlViews;
 			sourceTree = "<group>";
@@ -472,13 +472,13 @@
 				FAE4034120C7913C00018A02 /* ViewController.m in Sources */,
 				FAFF8DA620C92E8400400AF1 /* WJKVideoPlayerBasicControlView.m in Sources */,
 				FAE4039D20C7918B00018A02 /* WJKVideoPlayerCacheFile.m in Sources */,
+				FA8C49C021072A26008900E8 /* WJKVideoPlayerBrightnessView.m in Sources */,
 				FAE4039F20C7918B00018A02 /* WJKResourceLoadingRequestTask.m in Sources */,
 				FAE403A920C7918B00018A02 /* WJKVideoPlayerCachePath.m in Sources */,
 				FAE4039A20C7918B00018A02 /* WJKVideoPlayerCompat.m in Sources */,
 				FAE403A420C7918B00018A02 /* WJKVideoPlayerCache.m in Sources */,
 				FAFF8DA920C92EFB00400AF1 /* WJKBasicVideoPlayerViewController.m in Sources */,
 				FAE4039820C7918B00018A02 /* UIView+WebVideoCache.m in Sources */,
-				FAE403A020C7918B00018A02 /* WJKVideoPlayerBrightnessView.m in Sources */,
 				FAE403A720C7918B00018A02 /* UITableViewCell+WebVideoCache.m in Sources */,
 				FAE403A320C7918B00018A02 /* WJKVideoPlayerControlViews.m in Sources */,
 				FAFF8DAC20C9306700400AF1 /* WJKBaseTableViewController.m in Sources */,
@@ -648,12 +648,24 @@
 			baseConfigurationReference = E3E65D515305012E2BEB6D12 /* Pods-WJKVideoPlayerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WJKVideoPlayerDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = WJKVideoPlayerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CategoryKit-Additions\"",
+					"-l\"Masonry\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"UIKit\"",
+					"-w",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -665,12 +677,24 @@
 			baseConfigurationReference = 0F59834BC836CE931878E170 /* Pods-WJKVideoPlayerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ENWLKZ8AQ;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/WJKVideoPlayerDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = WJKVideoPlayerDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"CategoryKit-Additions\"",
+					"-l\"Masonry\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"UIKit\"",
+					"-w",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.nedu.WJKVideoPlayerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

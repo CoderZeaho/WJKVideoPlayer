@@ -61,15 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
    didFetchVideoFileLength:(NSUInteger)videoLength;
 
 /**
- Notify the playing cache ranges.
- 
- @param videoPlayerManager videoPlayerManager.
- @param cacheRanges playerStatus.
- */
-- (void)videoPlayerManager:(WJKVideoPlayerManager *)videoPlayerManager
-       cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges;
-
-/**
  * Notify the download progress value. this method will be called on main thread.
  * If the video is local or cached file, this method will be called once and the receive size equal to expected size,
  * If video is existed on web, this method will be called when the download progress value changed,
@@ -86,6 +77,16 @@ NS_ASSUME_NONNULL_BEGIN
                                      fragmentRanges:(NSArray<NSValue *> * _Nullable)fragmentRanges
                                        expectedSize:(NSUInteger)expectedSize
                                               error:(NSError *_Nullable)error;
+
+/**
+ Notify the playing loaded time range progress.
+ 
+ @param videoPlayerManager videoPlayerManager.
+ @param loadedTimeProgress loadedTimeProgress.
+ */
+- (void)videoPlayerManager:(WJKVideoPlayerManager *)videoPlayerManager
+loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress;
+
 
 /**
  * Notify the playing progress value. this method will be called on main thread.

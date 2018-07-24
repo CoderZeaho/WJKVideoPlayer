@@ -60,13 +60,22 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
                     videoURL:(NSURL *)videoURL;
 
 /**
- * This method will be called when received new video data from web.
+ * This method will be called when received new video and downloaded data from web.
  *
  * @param cacheRanges The ranges of video data cached in disk.
  * @param videoURL    The URL of video.
  */
 - (void)cacheRangeDidChange:(NSArray<NSValue *> *)cacheRanges
                    videoURL:(NSURL *)videoURL;
+
+/**
+ * This method will be called when received new video data from web.
+ *
+ * @param loadedTimeProgress    The loaded time range progress of video.
+ * @param videoURL              The URL of video.
+ */
+- (void)loadedTimeProgressDidChange:(CGFloat)loadedTimeProgress
+                           videoURL:(NSURL *)videoURL;
 
 /**
  * This method will be called when play progress changed.
