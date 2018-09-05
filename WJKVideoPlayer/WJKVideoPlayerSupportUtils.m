@@ -387,6 +387,8 @@ NSString *kWJKSwizzleErrorDomain = @"com.wjkvideoplayer.swizzle.www";
 
 @property (nonatomic, weak) UITableViewCell *playingVideoCell;
 
+@property (nonatomic, assign) CMTime lastTime;
+
 @end
 
 @implementation WJKVideoPlayerTableViewHelper
@@ -514,6 +516,10 @@ NSString *kWJKSwizzleErrorDomain = @"com.wjkvideoplayer.swizzle.www";
 
 - (BOOL)viewIsVisibleInVisibleFrameAtScrollViewDidScroll:(UIView *)view {
     return [self viewIsVisibleInTableViewVisibleFrame:view];
+}
+
+- (void)updatePlayingVideoCell:(UITableViewCell *)cell {
+    self.playingVideoCell = cell;
 }
 
 
@@ -669,6 +675,8 @@ NSString *kWJKSwizzleErrorDomain = @"com.wjkvideoplayer.swizzle.www";
         return;
     }
 
+    self.lastTime = self.playingVideoCell.wjk_currentTime;
+    
     [self.playingVideoCell.wjk_videoPlayView wjk_stopPlay];
     [self playVideoWithCell:bestCell];
 }

@@ -185,6 +185,8 @@ typedef NS_ENUM(NSInteger, WJKApplicationState) {
 
 @property (nonatomic, weak, readonly) UITableViewCell *playingVideoCell;
 
+@property (nonatomic, assign, readonly) CMTime lastTime;
+
 @property (nonatomic, assign) CGRect tableViewVisibleFrame;
 
 @property (nonatomic, assign) WJKScrollPlayStrategyType scrollPlayStrategyType;
@@ -217,6 +219,8 @@ typedef NS_ENUM(NSInteger, WJKApplicationState) {
 - (void)scrollViewDidEndDecelerating;
 
 - (BOOL)viewIsVisibleInVisibleFrameAtScrollViewDidScroll:(UIView *)view;
+
+- (void)updatePlayingVideoCell:(UITableViewCell *)cell;
 
 @end
 

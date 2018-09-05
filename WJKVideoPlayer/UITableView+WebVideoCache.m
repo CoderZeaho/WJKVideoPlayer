@@ -31,6 +31,10 @@ static const NSString *kWJKVideoPlayerScrollViewHelperKey = @"com.wjkvideoplayer
     return [self.helper playingVideoCell];
 }
 
+- (CMTime)wjk_lastTime {
+    return [self.helper lastTime];
+}
+
 - (void)setWjk_tableViewVisibleFrame:(CGRect)wjk_tableViewVisibleFrame {
     self.helper.tableViewVisibleFrame = wjk_tableViewVisibleFrame;
 }
@@ -105,6 +109,9 @@ static const NSString *kWJKVideoPlayerScrollViewHelperKey = @"com.wjkvideoplayer
     return [self.helper viewIsVisibleInVisibleFrameAtScrollViewDidScroll:view];
 }
 
+- (void)wjk_updatePlayingVideoCell:(UITableViewCell *)cell {
+    [self.helper updatePlayingVideoCell:cell];
+}
 
 #pragma mark - Private
 

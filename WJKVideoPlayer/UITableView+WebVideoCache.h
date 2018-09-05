@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UITableViewCell+WebVideoCache.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 typedef NS_ENUM(NSUInteger, WJKScrollPlayStrategyType) {
     /**
@@ -50,7 +51,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * The cell is playing video.
  */
-@property(nonatomic, readonly, nullable) UITableViewCell *wjk_playingVideoCell;
+@property (nonatomic, readonly, nullable) UITableViewCell *wjk_playingVideoCell;
+
+/**
+ * Play time before the previous video stops playing
+ */
+@property (nonatomic, readonly) CMTime wjk_lastTime;
 
 /**
  * The visible frame of tableView. `visible` mean when the tableView frame is {0, 0, screenWidth, screenHeight},
@@ -178,6 +184,13 @@ NS_ASSUME_NONNULL_BEGIN
  * @return The result.
  */
 - (BOOL)wjk_viewIsVisibleInVisibleFrameAtScrollViewDidScroll:(UIView *)view;
+
+/**
+ * Update cell when user plays video manually.
+ *
+ * @param cell playingVideoCell
+ */
+- (void)wjk_updatePlayingVideoCell:(UITableViewCell *)cell;
 
 @end
 

@@ -145,6 +145,8 @@ UIKIT_EXTERN NSString *WJKVideoPlayerControlProgressViewUserDidEndDragNotificati
  */
 - (void)deviceInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 
+- (void)tapGestureDidTap;
+
 - (void)hideControlView;
 - (void)showControlView;
 

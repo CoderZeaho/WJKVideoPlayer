@@ -329,7 +329,7 @@ static NSString *WJKVideoPlayerURL = @"www.wujike.com.cn";
         
         __strong typeof(wself) sself = wself;
         if(finished){
-            [sself internalResumeWithNeedCallDelegate:YES];
+            [sself internalBufferingWithNeedCallDelegate:YES];
         }
     }];
 }
@@ -392,7 +392,7 @@ static NSString *WJKVideoPlayerURL = @"www.wujike.com.cn";
     [self.playerModel.player seekToTime:time toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
         __strong typeof(wself) sself = wself;
         if(finished && needResume){
-            [sself internalResumeWithNeedCallDelegate:NO];
+            [sself internalBufferingWithNeedCallDelegate:NO];
         }
     }];
 }
@@ -686,6 +686,15 @@ static BOOL _isOpenAwakeWhenBuffering = NO;
     [self.playerModel resume];
     [self startCheckBufferingTimer];
     self.playerStatus = WJKVideoPlayerStatusPlaying;
+    if(needCallDelegate){
+        [self callPlayerStatusDidChangeDelegateMethod];
+    }
+}
+
+- (void)internalBufferingWithNeedCallDelegate:(BOOL)needCallDelegate {
+    [self.playerModel resume];
+    [self startCheckBufferingTimer];
+    self.playerStatus = WJKVideoPlayerStatusBuffering;
     if(needCallDelegate){
         [self callPlayerStatusDidChangeDelegateMethod];
     }

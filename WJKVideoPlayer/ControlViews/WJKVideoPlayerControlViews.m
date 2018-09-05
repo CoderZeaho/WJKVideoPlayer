@@ -849,9 +849,9 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
             UIEdgeInsets insets = self.window.safeAreaInsets;
             controlBarOriginX = insets.bottom;
         }
-        controlBarFrame = CGRectMake(controlBarOriginX,
+        controlBarFrame = CGRectMake(controlBarOriginX + 16,
                                      constrainedRect.size.height - kWJKVideoPlayerControlBarHeight - kWJKVideoPlayerControlBarLandscapeUpOffset,
-                constrainedRect.size.width - 2 * controlBarOriginX,
+                constrainedRect.size.width - 2 * controlBarOriginX - 32,
                 kWJKVideoPlayerControlBarHeight);
     }
     CGRect fastFordViewFrame = CGRectMake((constrainedRect.size.width - kWJKVideoPlayerFastForwardWidth) * 0.5, (constrainedRect.size.height - kWJKVideoPlayerFastForwardHeight) * 0.5, kWJKVideoPlayerFastForwardWidth, kWJKVideoPlayerFastForwardHeight);
@@ -926,6 +926,14 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
                                                      videoURL:videoURL];
 }
 
+- (void)videoPlayerSupportGeneratingDeviceOrientation:(BOOL)flag {
+    if (flag == YES) {
+        self.cancleGravitySensing = NO;
+    } else {
+        self.cancleGravitySensing = YES;
+    }
+}
+
 
 #pragma mark - Private
 
@@ -946,7 +954,6 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
             blurImage = [UIImage imageNamed:@"WJKVideoPlayer.bundle/wjk_videoplayer_blur"];
         }
         view.image = blurImage;
-        view.userInteractionEnabled = NO;
         [self addSubview:view];
 
         view;
@@ -1058,13 +1065,9 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
     [self deviceInterfaceOrientation:interfaceOrientation];
     switch (interfaceOrientation) {
         case UIInterfaceOrientationPortraitUpsideDown: {
-            WJKVideoPlayerControlBar *controlBar = (WJKVideoPlayerControlBar *)self.controlBar;
-            controlBar.landscapeButton.selected = YES;
         }
             break;
         case UIInterfaceOrientationPortrait: {
-            WJKVideoPlayerControlBar *controlBar = (WJKVideoPlayerControlBar *)self.controlBar;
-            controlBar.landscapeButton.selected = NO;
             [[self playerView] wjk_gotoPortrait];
             
             [[self brightnessView] removeFromSuperview];
@@ -1078,8 +1081,6 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
             break;
         case UIInterfaceOrientationLandscapeLeft: {
         case UIInterfaceOrientationLandscapeRight: {
-            WJKVideoPlayerControlBar *controlBar = (WJKVideoPlayerControlBar *)self.controlBar;
-            controlBar.landscapeButton.selected = YES;
             [[self playerView] wjk_gotoLandscape];
             [[self brightnessView] removeFromSuperview];
             [self addSubview:[self brightnessView]];

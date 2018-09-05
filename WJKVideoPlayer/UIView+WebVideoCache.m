@@ -30,8 +30,6 @@
 
 @property (nonatomic, weak) UIView *playVideoView;
 
-@property (nonatomic, strong) UIImageView *backgroundImageView;
-
 @property(nonatomic, copy) NSURL *videoURL;
 
 @end
@@ -64,13 +62,6 @@
         _videoPlayerView = [[WJKVideoPlayerView alloc] init];
     }
     return _videoPlayerView;
-}
-
-- (UIImageView *)backgroundImageView {
-    if (!_backgroundImageView) {
-        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"trim_video_background"]];
-    }
-    return _backgroundImageView;
 }
 
 @end
@@ -444,10 +435,6 @@
     CGRect videoPlayerViewFrameInWindow = [self convertRect:videoPlayerView.frame toView:nil];
     [videoPlayerView removeFromSuperview];
     
-    UIImageView *backgroundImageView =  self.helper.backgroundImageView;
-    [[UIApplication sharedApplication].keyWindow addSubview:backgroundImageView];
-    backgroundImageView.frame = videoPlayerViewFrameInWindow;
-    
     [[UIApplication sharedApplication].keyWindow addSubview:videoPlayerView];
     videoPlayerView.frame = videoPlayerViewFrameInWindow;
     videoPlayerView.controlContainerView.alpha = 0;
@@ -500,9 +487,6 @@
     self.helper.viewInterfaceOrientation = WJKVideoPlayViewInterfaceOrientationPortrait;
     WJKVideoPlayerView *videoPlayerView = self.helper.videoPlayerView;
     videoPlayerView.backgroundColor = [UIColor blackColor];
-    
-    UIImageView *backgroundImageView = self.helper.backgroundImageView;
-    [backgroundImageView removeFromSuperview];
     
     if (self.wjk_videoPlayerDelegate && [self.wjk_videoPlayerDelegate respondsToSelector:@selector(shouldShowBlackBackgroundWhenPlaybackStart)]) {
         BOOL shouldShow = [self.wjk_videoPlayerDelegate shouldShowBlackBackgroundWhenPlaybackStart];
@@ -646,11 +630,6 @@
     videoPlayerView.bounds = bounds;
     videoPlayerView.center = center;
     videoPlayerView.transform = CGAffineTransformMakeRotation(M_PI_2);
-    
-    UIImageView *backgroundImageView = self.helper.backgroundImageView;
-    backgroundImageView.bounds = bounds;
-    backgroundImageView.center = center;
-    backgroundImageView.transform = CGAffineTransformMakeRotation(M_PI_2);
     
     [[WJKVideoPlayerManager sharedManager] videoPlayer].playerModel.playerLayer.frame = bounds;
 }
