@@ -183,6 +183,7 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
 
 - (void)dragSliderDidDrag:(UISlider *)slider {
     self.userDragTimeInterval = slider.value * self.totalSeconds;
+    [self.playerView wjk_seekToTime:CMTimeMakeWithSeconds([self fetchElapsedTimeInterval], 1000)];
 }
 
 - (void)dragSliderDidEnd:(UISlider *)slider {
@@ -197,8 +198,6 @@ nearestViewControllerInViewTree:(UIViewController *_Nullable)nearestViewControll
         return;
     }
     [self displayCacheProgressViewIfNeedWhenAutomaticCachingSupported];
-    [self.playerView wjk_seekToTime:CMTimeMakeWithSeconds([self fetchElapsedTimeInterval], 1000)];
-    [self.playerView wjk_resume];
 }
 
 - (void)removeCacheProgressViewIfNeed {
@@ -790,7 +789,6 @@ static const CGFloat kWJKVideoPlayerFastForwardWidth = 125;
         case UIGestureRecognizerStateEnded: {
             switch (self.panDirection) {
                 case WJKControlViewPanDirectionHorizontalMoved:{
-                    [self.playerView wjk_resume];
                     self.fastForwardView.hidden = YES;
                     self.seekTime = 0;
                     break;

@@ -385,13 +385,12 @@ static NSString *WJKVideoPlayerURL = @"www.wujike.com.cn";
     if(!CMTIME_IS_VALID(time)){
         return;
     }
-    BOOL needResume = self.playerModel.player.rate != 0;
     self.playerModel.lastTime = 0;
     [self internalPauseWithNeedCallDelegate:NO];
     __weak typeof(self) wself = self;
     [self.playerModel.player seekToTime:time toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero completionHandler:^(BOOL finished) {
         __strong typeof(wself) sself = wself;
-        if(finished && needResume){
+        if(finished){
             [sself internalBufferingWithNeedCallDelegate:NO];
         }
     }];
